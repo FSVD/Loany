@@ -1,0 +1,855 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4><% if (locals.valor_pd_id != "") { %><b>Producto: </b><%= locals.valor_pd_id %> - <% } %><a href="/administrar_productos">Ver lista productos</a></h4>
+	</div>
+</div>
+<br>
+<form id="<%= locals.valor_id_formulario %>" <%= locals.valor_action_formulario %> <%= locals.valor_metodo_formulario %>>
+	
+	<input type="hidden" name="pd_id" value="<%= locals.valor_pd_id %>">
+	
+	<div class="row">
+    	<div class="col-md-12">
+    		<h3>Datos producto</h3>
+    		<br>
+    	</div>
+    </div>
+	<div class="row">
+	    <div class="col-md-6">
+	        <div class="form-group">
+	        	<label for="pd_nombre">Nombre producto</label> 
+	        	<input id="pd_nombre" name="pd_nombre" type="text" class="form-control" value="<%= locals.valor_pd_nombre %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="pd_importe_minimo">Importe minimo RD$</label>
+	        	<select id="pd_importe_minimo" name="pd_importe_minimo" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% if (locals.valor_pd_importe_minimo.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "1000") { %>
+	        	    	<option value="1000" selected>1,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="1000">1,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "1500") { %>
+	        	    	<option value="1500" selected>1,500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="1500">1,500.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "2000") { %>
+	        	    	<option value="2000" selected>2,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="2000">2,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "2500") { %>
+	        	    	<option value="2500" selected>2,500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="2500">2,500.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "3000") { %>
+	        	    	<option value="3000" selected>3,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="3000">3,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "3500") { %>
+	        	    	<option value="3500" selected>3,500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="3500">3,500.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "4000") { %>
+	        	    	<option value="4000" selected>4,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="4000">4,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "4500") { %>
+	        	    	<option value="4500" selected>4,500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="4500">4,500.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "5000") { %>
+	        	    	<option value="5000" selected>5,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="5000">5,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "10000") { %>
+	        	    	<option value="10000" selected>10,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="10000">10,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_minimo.seleccionado == "15000") { %>
+	        	    	<option value="15000" selected>15,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="15000">15,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_minimo.seleccionado == "20000") { %>
+	        	    	<option value="20000" selected>20,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="20000">20,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "25000") { %>
+	        	    	<option value="25000" selected>25,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="25000">25,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_minimo.seleccionado == "30000") { %>
+	        	    	<option value="30000" selected>30,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="30000">30,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "35000") { %>
+	        	    	<option value="35000" selected>35,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="35000">35,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "40000") { %>
+	        	    	<option value="40000" selected>40,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="40000">40,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "45000") { %>
+	        	    	<option value="45000" selected>45,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="45000">45,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "50000") { %>
+	        	    	<option value="50000" selected>50,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="50000">50,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_minimo.seleccionado == "100000") { %>
+	        	    	<option value="100000" selected>100,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="100000">100,000.00</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="pd_importe_maximo">Importe maximo RD$</label>
+	        	<select id="pd_importe_maximo" name="pd_importe_maximo" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+						<option value="no_seleccionado">Selecciona</option>
+        	    	<% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "3000") { %>
+	        	    	<option value="3000" selected>3,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="3000" >3,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "3500") { %>
+	        	    	<option value="3500" selected>3,500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="3500" >3,500.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "4000") { %>
+	        	    	<option value="4000" selected>4,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="4000" >4,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "4500") { %>
+	        	    	<option value="4500" selected>4,500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="4500" >4,500.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "5000") { %>
+	        	    	<option value="5000" selected>5,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="5000">5,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "10000") { %>
+	        	    	<option value="10000" selected>10,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="10000">10,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "15000") { %>
+	        	    	<option value="15000" selected>15,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="15000">15,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "20000") { %>
+	        	    	<option value="20000" selected>20,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="20000">20,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "25000") { %>
+	        	    	<option value="25000" selected>25,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="25000">25,000.00</option>
+	        	    <% } %>
+        	    	<% if (locals.valor_pd_importe_maximo.seleccionado == "30000") { %>
+	        	    	<option value="30000" selected>30,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="30000">30,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "35000") { %>
+	        	    	<option value="35000" selected>35,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="35000">35,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "40000") { %>
+	        	    	<option value="40000" selected>40,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="40000">40,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "45000") { %>
+	        	    	<option value="45000" selected>45,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="45000">45,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "50000") { %>
+	        	    	<option value="50000" selected>50,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="50000">50,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "100000") { %>
+	        	    	<option value="100000" selected>100,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="100000">100,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "200000") { %>
+	        	    	<option value="200000" selected>200,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="200000">200,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "300000") { %>
+	        	    	<option value="300000" selected>300,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="300000">300,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "400000") { %>
+	        	    	<option value="400000" selected>400,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="400000">400,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "500000") { %>
+	        	    	<option value="500000" selected>500,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="500000">500,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "600000") { %>
+	        	    	<option value="600000" selected>600,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="600000">600,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "700000") { %>
+	        	    	<option value="700000" selected>700,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="700000">700,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "800000") { %>
+	        	    	<option value="800000" selected>800,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="800000">800,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "900000") { %>
+	        	    	<option value="900000" selected>900,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="900000">900,000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_importe_maximo.seleccionado == "1000000") { %>
+	        	    	<option value="1000000" selected>1000,000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="1000000">1,000,000.00</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="pd_montos">Nº montos</label>
+	        	<select id="pd_montos" name="pd_montos" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% if (locals.valor_pd_montos.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "1") { %>
+	        	    	<option value="1" selected>1</option>
+	        	    <% } else { %>
+	        	    	<option value="1">1</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "2") { %>
+	        	    	<option value="2" selected>2</option>
+	        	    <% } else { %>
+	        	    	<option value="2">2</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "3") { %>
+	        	    	<option value="3" selected>3</option>
+	        	    <% } else { %>
+	        	    	<option value="3">3</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "4") { %>
+	        	    	<option value="4" selected>4</option>
+	        	    <% } else { %>
+	        	    	<option value="4">4</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "5") { %>
+	        	    	<option value="5" selected>5</option>
+	        	    <% } else { %>
+	        	    	<option value="5">5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "6") { %>
+	        	    	<option value="6" selected>6</option>
+	        	    <% } else { %>
+	        	    	<option value="6">6</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "7") { %>
+	        	    	<option value="7" selected>7</option>
+	        	    <% } else { %>
+	        	    	<option value="7">7</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "8") { %>
+	        	    	<option value="8" selected>8</option>
+	        	    <% } else { %>
+	        	    	<option value="8">8</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "9") { %>
+	        	    	<option value="9" selected>9</option>
+	        	    <% } else { %>
+	        	    	<option value="9">9</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "10") { %>
+	        	    	<option value="10" selected>10</option>
+	        	    <% } else { %>
+	        	    	<option value="10">10</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "11") { %>
+	        	    	<option value="11" selected>11</option>
+	        	    <% } else { %>
+	        	    	<option value="11">11</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "12") { %>
+	        	    	<option value="12" selected>12</option>
+	        	    <% } else { %>
+	        	    	<option value="12">12</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "13") { %>
+	        	    	<option value="13" selected>13</option>
+	        	    <% } else { %>
+	        	    	<option value="13">13</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "14") { %>
+	        	    	<option value="14" selected>14</option>
+	        	    <% } else { %>
+	        	    	<option value="14">14</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "15") { %>
+	        	    	<option value="15" selected>15</option>
+	        	    <% } else { %>
+	        	    	<option value="15">15</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "16") { %>
+	        	    	<option value="16" selected>16</option>
+	        	    <% } else { %>
+	        	    	<option value="16">16</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "17") { %>
+	        	    	<option value="17" selected>17</option>
+	        	    <% } else { %>
+	        	    	<option value="17">17</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "18") { %>
+	        	    	<option value="18" selected>18</option>
+	        	    <% } else { %>
+	        	    	<option value="18">18</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "19") { %>
+	        	    	<option value="19" selected>19</option>
+	        	    <% } else { %>
+	        	    	<option value="19">19</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "20") { %>
+	        	    	<option value="20" selected>20</option>
+	        	    <% } else { %>
+	        	    	<option value="20">20</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "21") { %>
+	        	    	<option value="21" selected>21</option>
+	        	    <% } else { %>
+	        	    	<option value="21">21</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "22") { %>
+	        	    	<option value="22" selected>22</option>
+	        	    <% } else { %>
+	        	    	<option value="22">22</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "23") { %>
+	        	    	<option value="23" selected>23</option>
+	        	    <% } else { %>
+	        	    	<option value="23">23</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "24") { %>
+	        	    	<option value="24" selected>24</option>
+	        	    <% } else { %>
+	        	    	<option value="24">24</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "25") { %>
+	        	    	<option value="25" selected>25</option>
+	        	    <% } else { %>
+	        	    	<option value="25">25</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "26") { %>
+	        	    	<option value="26" selected>26</option>
+	        	    <% } else { %>
+	        	    	<option value="26">26</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "27") { %>
+	        	    	<option value="27" selected>27</option>
+	        	    <% } else { %>
+	        	    	<option value="27">27</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "28") { %>
+	        	    	<option value="28" selected>28</option>
+	        	    <% } else { %>
+	        	    	<option value="28">28</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "29") { %>
+	        	    	<option value="29" selected>29</option>
+	        	    <% } else { %>
+	        	    	<option value="29">29</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "30") { %>
+	        	    	<option value="30" selected>30</option>
+	        	    <% } else { %>
+	        	    	<option value="30">30</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "31") { %>
+	        	    	<option value="31" selected>31</option>
+	        	    <% } else { %>
+	        	    	<option value="31">31</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "32") { %>
+	        	    	<option value="32" selected>32</option>
+	        	    <% } else { %>
+	        	    	<option value="32">32</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "33") { %>
+	        	    	<option value="33" selected>33</option>
+	        	    <% } else { %>
+	        	    	<option value="33">33</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "34") { %>
+	        	    	<option value="34" selected>34</option>
+	        	    <% } else { %>
+	        	    	<option value="34">34</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "35") { %>
+	        	    	<option value="35" selected>35</option>
+	        	    <% } else { %>
+	        	    	<option value="35">35</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_montos.seleccionado == "36") { %>
+	        	    	<option value="36" selected>36</option>
+	        	    <% } else { %>
+	        	    	<option value="36">36</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="pd_interes_mensual">Interes mensual %</label>
+	        	<select id="pd_interes_mensual" name="pd_interes_mensual" class="form-control" <%= locals.estado_control_formulario %>>
+	        		<% if (locals.valor_pd_interes_mensual.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "2.5") { %>
+	        	    	<option value="2.5" selected>2,5</option>
+	        	    <% } else { %>
+	        	    	<option value="2.5">2,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "5") { %>
+	        	    	<option value="5" selected>5</option>
+	        	    <% } else { %>
+	        	    	<option value="5">5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "7.5") { %>
+	        	    	<option value="7.5" selected>7,5</option>
+	        	    <% } else { %>
+	        	    	<option value="7.5">7,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "10") { %>
+	        	    	<option value="10" selected>10</option>
+	        	    <% } else { %>
+	        	    	<option value="10">10</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "12.5") { %>
+	        	    	<option value="12.5" selected>12,5</option>
+	        	    <% } else { %>
+	        	    	<option value="12.5">12,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "15") { %>
+	        	    	<option value="15" selected>15</option>
+	        	    <% } else { %>
+	        	    	<option value="15">15</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "17.5") { %>
+	        	    	<option value="17.5" selected>17,5</option>
+	        	    <% } else { %>
+	        	    	<option value="17.5">17,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "20") { %>
+	        	    	<option value="20" selected>20</option>
+	        	    <% } else { %>
+	        	    	<option value="20">20</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "22.5") { %>
+	        	    	<option value="22.5" selected>22,5</option>
+	        	    <% } else { %>
+	        	    	<option value="22.5">22,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "25") { %>
+	        	    	<option value="25" selected>25</option>
+	        	    <% } else { %>
+	        	    	<option value="25">25</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "27.5") { %>
+	        	    	<option value="27.5" selected>27,5</option>
+	        	    <% } else { %>
+	        	    	<option value="27.5">27,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_interes_mensual.seleccionado == "30") { %>
+	        	    	<option value="30" selected>30</option>
+	        	    <% } else { %>
+	        	    	<option value="30">30</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="pd_max_cuotas">Max cuotas</label>
+	        	<select id="pd_max_cuotas" name="pd_max_cuotas" class="form-control" <%= locals.estado_control_formulario %>>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "1") { %>
+	        	    	<option value="1" selected>1</option>
+	        	    <% } else { %>
+	        	    	<option value="1">1</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "2") { %>
+	        	    	<option value="2" selected>2</option>
+	        	    <% } else { %>
+	        	    	<option value="2">2</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "3") { %>
+	        	    	<option value="3" selected>3</option>
+	        	    <% } else { %>
+	        	    	<option value="3">3</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "4") { %>
+	        	    	<option value="4" selected>4</option>
+	        	    <% } else { %>
+	        	    	<option value="4">4</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "5") { %>
+	        	    	<option value="5" selected>4</option>
+	        	    <% } else { %>
+	        	    	<option value="5">5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "6") { %>
+	        	    	<option value="6" selected>6</option>
+	        	    <% } else { %>
+	        	    	<option value="6">6</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "7") { %>
+	        	    	<option value="7" selected>7</option>
+	        	    <% } else { %>
+	        	    	<option value="7">7</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "8") { %>
+	        	    	<option value="8" selected>8</option>
+	        	    <% } else { %>
+	        	    	<option value="8">8</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "9") { %>
+	        	    	<option value="9" selected>9</option>
+	        	    <% } else { %>
+	        	    	<option value="9">9</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "10") { %>
+	        	    	<option value="10" selected>10</option>
+	        	    <% } else { %>
+	        	    	<option value="10">10</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "11") { %>
+	        	    	<option value="11" selected>11</option>
+	        	    <% } else { %>
+	        	    	<option value="11">11</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "12") { %>
+	        	    	<option value="12" selected>12</option>
+	        	    <% } else { %>
+	        	    	<option value="12">12</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "13") { %>
+	        	    	<option value="13" selected>13</option>
+	        	    <% } else { %>
+	        	    	<option value="13">13</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "14") { %>
+	        	    	<option value="14" selected>14</option>
+	        	    <% } else { %>
+	        	    	<option value="14">14</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "15") { %>
+	        	    	<option value="15" selected>15</option>
+	        	    <% } else { %>
+	        	    	<option value="15">15</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "16") { %>
+	        	    	<option value="16" selected>16</option>
+	        	    <% } else { %>
+	        	    	<option value="16">16</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "17") { %>
+	        	    	<option value="17" selected>17</option>
+	        	    <% } else { %>
+	        	    	<option value="17">17</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "18") { %>
+	        	    	<option value="18" selected>18</option>
+	        	    <% } else { %>
+	        	    	<option value="18">18</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "19") { %>
+	        	    	<option value="19" selected>19</option>
+	        	    <% } else { %>
+	        	    	<option value="19">19</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "20") { %>
+	        	    	<option value="20" selected>20</option>
+	        	    <% } else { %>
+	        	    	<option value="20">20</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "21") { %>
+	        	    	<option value="21" selected>21</option>
+	        	    <% } else { %>
+	        	    	<option value="21">21</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "22") { %>
+	        	    	<option value="22" selected>22</option>
+	        	    <% } else { %>
+	        	    	<option value="22">22</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "23") { %>
+	        	    	<option value="23" selected>23</option>
+	        	    <% } else { %>
+	        	    	<option value="23">23</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "24") { %>
+	        	    	<option value="24" selected>24</option>
+	        	    <% } else { %>
+	        	    	<option value="24">24</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "25") { %>
+	        	    	<option value="25" selected>25</option>
+	        	    <% } else { %>
+	        	    	<option value="25">25</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "26") { %>
+	        	    	<option value="26" selected>26</option>
+	        	    <% } else { %>
+	        	    	<option value="26">26</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "27") { %>
+	        	    	<option value="27" selected>27</option>
+	        	    <% } else { %>
+	        	    	<option value="27">27</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "28") { %>
+	        	    	<option value="28" selected>28</option>
+	        	    <% } else { %>
+	        	    	<option value="28">28</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "29") { %>
+	        	    	<option value="29" selected>29</option>
+	        	    <% } else { %>
+	        	    	<option value="29">29</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "30") { %>
+	        	    	<option value="30" selected>30</option>
+	        	    <% } else { %>
+	        	    	<option value="30">30</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "31") { %>
+	        	    	<option value="31" selected>31</option>
+	        	    <% } else { %>
+	        	    	<option value="31">31</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "32") { %>
+	        	    	<option value="32" selected>32</option>
+	        	    <% } else { %>
+	        	    	<option value="32">32</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "33") { %>
+	        	    	<option value="33" selected>33</option>
+	        	    <% } else { %>
+	        	    	<option value="33">33</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "34") { %>
+	        	    	<option value="34" selected>34</option>
+	        	    <% } else { %>
+	        	    	<option value="34">34</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "35") { %>
+	        	    	<option value="35" selected>35</option>
+	        	    <% } else { %>
+	        	    	<option value="35">35</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_max_cuotas.seleccionado == "36") { %>
+	        	    	<option value="36" selected>36</option>
+	        	    <% } else { %>
+	        	    	<option value="36">36</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="pd_gastos_activacion">Gastos activacion RD$</label>
+	        	<select id="pd_gastos_activacion" name="pd_gastos_activacion" class="form-control" <%= locals.estado_control_formulario %>>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "0") { %>
+	        	    	<option value="0" selected>000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="0">000.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "100") { %>
+	        	    	<option value="100" selected>100.00</option>
+	        	    <% } else { %>
+	        	    	<option value="100">100.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "200") { %>
+	        	    	<option value="200" selected>200.00</option>
+	        	    <% } else { %>
+	        	    	<option value="200">200.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "300") { %>
+	        	    	<option value="300" selected>300.00</option>
+	        	    <% } else { %>
+	        	    	<option value="300">300.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "400") { %>
+	        	    	<option value="400" selected>400.00</option>
+	        	    <% } else { %>
+	        	    	<option value="400">400.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "500") { %>
+	        	    	<option value="500" selected>500.00</option>
+	        	    <% } else { %>
+	        	    	<option value="500">500.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "600") { %>
+	        	    	<option value="600" selected>600.00</option>
+	        	    <% } else { %>
+	        	    	<option value="600">600.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "700") { %>
+	        	    	<option value="700" selected>700.00</option>
+	        	    <% } else { %>
+	        	    	<option value="700">700.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "800") { %>
+	        	    	<option value="800" selected>800.00</option>
+	        	    <% } else { %>
+	        	    	<option value="800">800.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "900") { %>
+	        	    	<option value="900" selected>900.00</option>
+	        	    <% } else { %>
+	        	    	<option value="900">900.00</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_pd_gastos_activacion.seleccionado == "1000") { %>
+	        	    	<option value="1000" selected>1000.00</option>
+	        	    <% } else { %>
+	        	    	<option value="1000">1000.00</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+    	<div class="col-md-12">
+    		<div class="form-group">
+    			<label for="pd_comentarios">Comentarios</label> 
+    			<textarea id="pd_comentarios" name="pd_comentarios" class="form-control" rows="5" <%= locals.estado_control_formulario %>><%= locals.valor_pd_comentarios %></textarea>
+    		</div>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5><b>Forma de pago</b></h5>
+		</div>
+	</div>
+	<div class="form-group">
+		<% for (var i in locals.lista_formas_pago) { %>
+			<div class="checkbox">
+				<label>
+		    		<% if (locals.formas_pago_seleccionadas[i] == "seleccionada") { %>
+		    		<input type="checkbox" name="pd_forma_pago" value="<%= locals.lista_formas_pago[i].id_forma_pago %>" checked <%= locals.estado_control_formulario %>> <%- locals.lista_formas_pago[i].nombre_forma_pago %>
+		    	<% } else { %>
+		    		<input type="checkbox" name="pd_forma_pago" value="<%= locals.lista_formas_pago[i].id_forma_pago %>" <%= locals.estado_control_formulario %>> <%- locals.lista_formas_pago[i].nombre_forma_pago %>
+		    	<% } %>
+				</label>
+			</div>
+		<% } %>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5><b>Estado producto</b></h5>
+		</div>
+	</div>
+	<div class="radio">
+	    <label for="radio1">
+        	<% if (locals.valor_pd_estado.seleccionado == "1") { %>
+	        	<input type="radio" name="pd_estado" id="radio1" value="1" checked <%= locals.estado_control_formulario %>> Activo
+	        <% } else { %>
+	        	<input type="radio" name="pd_estado" id="radio1" value="1" <%= locals.estado_control_formulario %>> Activo
+	        <% } %>
+	    </label>
+	</div>
+	<div class="radio">
+	    <label for="radio2">
+        	<% if (locals.valor_pd_estado.seleccionado == "2") { %>
+	        	<input type="radio" name="pd_estado" id="radio2" value="2" checked <%= locals.estado_control_formulario %>> Inactivo
+	        <% } else { %>
+	        	<input type="radio" name="pd_estado" id="radio2" value="2" <%= locals.estado_control_formulario %>> Inactivo
+	        <% } %>
+	    </label>
+	</div>
+	<div class="row">
+	    	<div class="col-md-12">
+			<hr>
+		</div>
+	</div>
+		
+	<!-- Botones -->
+		
+	<div class="row <%= locals.visibilidad %>">
+	    <div class="col-md-12 text-right">
+	        <div class="form-group">
+	        	<a href="#ventana1" class="btn btn-default" data-toggle="modal">Cancelar</a>
+            	<button class="btn btn-primary" type="submit" id="valida_formulario">Guardar</button>
+	        </div>
+	    </div>
+	</div>
+	<hr class="<%= locals.visibilidad %>">
+</form>

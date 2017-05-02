@@ -1,0 +1,57 @@
+CLIENTES
+
+buscador clientes:			get    - /buscador_clientes
+formulario nuevo cliente:	get    - /formulario_cliente
+buscar clientes:			get    - /buscar_clientes
+crear cliente:				post   - /crear_cliente
+ver ficha cliente:			get    - /visualizar_cliente:id
+actualiza datos cliente:	put    - /actualizar_cliente:id
+eliminar cliente:			delete - /eliminar_cliente:id
+
+
+
+SOLICITUDES
+
+buscador solicitudes:		get    - /buscador_solicitudes
+formulario nueva solicitud:	get    - /formulario_solicitud
+buscar solicitudes:			get    - /buscar_solicitudes
+crear solicitud:			post   - /crear_solicitud
+ver ficha solicitud:		get    - /visualizar_solicitud:id
+actualiza datos solicitud:	put    - /actualizar_solicitud:id
+eliminar solicitud:			delete - /eliminar_solicitud:id
+
+
+
+PRESTAMOS
+
+buscador prestamos:			get    - /buscador_prestamos
+formulario nuevo prestamo:	get    - /formulario_prestamo
+buscar prestamos:			get    - /buscar_prestamos
+crear prestamo:				post   - /crear_prestamo
+ver ficha prestamo:			get    - /visualizar_prestamo:id
+actualiza datos prestamo:	put    - /actualizar_prestamo:id
+eliminar prestamo:			delete - /eliminar_prestamo:id
+administrar productos:		get    - /administracion_productos
+formulario producto:		get    - /formulario_producto
+crear producto:				post   - /crear_producto
+ver ficha producto:			get    - /visualizar_producto:id
+actualiza datos producto:	put    - /actualizar_producto:id
+eliminar producto:			delete - /eliminar_producto:id
+
+
+GRUPOS
+
+buscador grupos:			get    - /buscador_grupos
+formulario nuevo grupo:		get    - /formulario_grupo
+buscar grupos:				get    - /buscar_grupos
+crear grupo:				post   - /crear_grupo
+ver ficha grupo:			get    - /visualizar_grupo:id
+actualiza datos grupo:		put    - /actualizar_grupo:id
+eliminar grupo:				delete - /eliminar_grupo:id
+
+
+SISTEMA
+
+administrar mora:			get    - /administracion_mora
+actualiza datos mora:		put    - /actualizar_mora
+ver informaciones sistema:	get    - /informacion

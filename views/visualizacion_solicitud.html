@@ -1,0 +1,43 @@
+<% include partials/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-6">
+    		<h1 id="titulo"><%= locals.nombre_pagina %></h1>
+    	</div>
+    	<div class="col-md-6 text-right">
+    	<br>
+    		<% if (locals.valor_sl_existencia_prestamo != 0) { %>
+    			<button class="btn btn-success" type="submit" form="variables_creacion_visualizacion_prestamo">Ver prestamo</button>
+    		<% } %>
+    		<% if (locals.valor_sl_estado.seleccionado == "2" && locals.valor_sl_existencia_prestamo == 0) { %>
+    			<button class="btn btn-success" type="submit" form="variables_creacion_visualizacion_prestamo">Crear prestamo</button>
+    		<% } %>
+    		<% if (locals.valor_sl_existencia_prestamo == 0) { %>
+    			<button class="btn btn-success" type="submit" form="formulario_solicitud" id="btn_modifica">Modificar</button>
+    		<% } %>
+    		<a href="#ventana1" class="btn btn-danger" data-toggle="modal">Eliminar</a>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<%- locals.valor_info_prestamo %>
+    	</div>
+    </div>
+    <hr>
+    
+    <!-- Formulario solicitud -->
+
+    <% include partials/formulario_solicitud.html %>
+
+    <!-- Codigo ventanas modales -->
+    
+    <% include partials/modal_1.html %>
+    
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include partials/footer.html %>

@@ -1,0 +1,1044 @@
+<form id="variables_creacion_visualizacion_solicitudes" action="/crear_solicitud" method="get">
+	<input type="hidden" name="cl_id" value="<%= locals.valor_cl_id %>">
+    <input type="hidden" name="cl_id_historial" value="<%= locals.valor_cl_id_historial %>">
+</form>
+  
+<form id="<%= locals.valor_id_formulario %>" <%= locals.valor_action_formulario %> <%= locals.valor_metodo_formulario %>>
+   
+	<input type="hidden" name="cl_id" value="<%= locals.valor_cl_id %>">
+    <input type="hidden" name="cl_id_historial" value="<%= locals.valor_cl_id_historial %>">
+    <input type="hidden" name="cl_existencia_solicitudes" value="<%= locals.valor_cl_existencia_solicitudes %>">
+    <input type="hidden" name="cl_existencia_prestamo_activo" value="<%= locals.valor_cl_existencia_prestamo_activo %>">
+    <input type="hidden" name="cl_existencia_historial_actualizado" value="<%= locals.valor_cl_existencia_historial_actualizado %>">
+    
+    <!-- Datos identificativos -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Datos identificativos</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_nombre">Nombre(s)</label> 
+            	<input id="cl_nombre" name="cl_nombre" type="text" class="form-control" value="<%= locals.valor_cl_nombre %>" <%= locals.estado_control_formulario %> <%= locals.estado_control_formulario_modificacion %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_apellido">Apellido(s)</label> 
+            	<input id="cl_apellido" name="cl_apellido" type="text" class="form-control" value="<%= locals.valor_cl_apellido %>" <%= locals.estado_control_formulario %> <%= locals.estado_control_formulario_modificacion %>>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+            	<label for="cl_fecha_nacimiento">Fecha de nacimiento</label>
+            	<div class="input-group date" id="selector_cl_fecha_nacimiento"> 
+                    <div class="input-group-addon add-on">
+                    	<span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+            	    <input id="cl_fecha_nacimiento" name="cl_fecha_nacimiento" type="text" class="form-control" placeholder="dd/mm/aaaa" value="<%= locals.valor_cl_fecha_nacimiento %>" <%= locals.estado_control_formulario %> <%= locals.estado_control_formulario_modificacion %>>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-2">
+        	<div class="form-group">
+        		<label for="cl_tipo_documento">Tipo documento</label>
+        		<select id="cl_tipo_documento" name="cl_tipo_documento" class="form-control" <%= locals.estado_control_formulario %> <%= locals.estado_control_formulario_modificacion %> onchange="desabilitaCampoNumeroDocumento(this);">
+        			<% if (locals.valor_cl_tipo_documento.seleccionado == "no_seleccionado") { %>
+        				<option value="no_seleccionado" selected>Selecciona</option>
+        		    <% } else { %>
+        		    	<option value="no_seleccionado">Selecciona</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_tipo_documento.seleccionado == "cedula") { %>
+        		    	<option value="cedula" selected>Cedula</option>
+        		    <% } else { %>
+        		    	<option value="cedula">Cedula</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_tipo_documento.seleccionado == "pasaporte") { %>
+        		    	<option value="pasaporte" selected>Pasaporte</option>
+        		    <% } else { %>
+        		    	<option value="pasaporte">Pasaporte</option>
+        		    <% } %>
+        		</select>
+        	</div>
+    	</div>
+    	<div class="col-md-2">
+            <div class="form-group">
+            	<% if (locals.valor_cl_tipo_documento.seleccionado == "no_seleccionado") { %>
+            		<label for="cl_numero_documento" id="cl_etiqueta_campo_numero_documento">N° documento</label>
+            	<% } else { %>
+            		<label for="cl_numero_documento" id="cl_etiqueta_campo_numero_documento">N° <%= locals.valor_cl_tipo_documento.seleccionado %></label>
+            	<% } %>
+            	<input id="cl_numero_documento" name="cl_numero_documento" type="text" class="form-control" value="<%= locals.valor_cl_numero_documento %>" <%= locals.estado_control_formulario %> <%= locals.estado_control_formulario_modificacion %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        	<div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Datos personales -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Datos personales</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_celular">Telefono celular</label> 
+            	<input id="cl_celular" name="cl_celular" type="text" class="form-control" value="<%= locals.valor_cl_celular %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_otro_numero">Otro numero</label> 
+            	<input id="cl_otro_numero" name="cl_otro_numero" type="text" class="form-control" value="<%= locals.valor_cl_otro_numero %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            	<label for="cl_correo_electronico">Correo electronico</label>
+            	<input id="cl_correo_electronico" name="cl_correo_electronico" type="email" class="form-control" value="<%= locals.valor_cl_correo_electronico %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-2">
+        	<div class="form-group">
+        		<label for="cl_estado_civil">Estado civil</label>
+        		<select id="cl_estado_civil" name="cl_estado_civil" class="form-control" <%= locals.estado_control_formulario %> onchange="desabilitaCamposConyuge(this);">
+        			<% if (locals.valor_cl_estado_civil.seleccionado == "0") { %>
+        				<option value="0" selected>Selecciona</option>
+        		    <% } else { %>
+        		    	<option value="0">Selecciona</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_estado_civil.seleccionado == "1") { %>
+        		    	<option value="1" selected>Casado</option>
+        		    <% } else { %>
+        		    	<option value="1">Casado</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_estado_civil.seleccionado == "2") { %>
+        		    	<option value="2" selected>Soltero</option>
+        		    <% } else { %>
+        		    	<option value="2">Soltero</option>
+        		    <% } %>
+        		</select>
+        	</div>
+    	</div>
+    	<div class="col-md-2">
+        	<div class="form-group">
+        		<label for="cl_hijos">N° hijos</label>
+        		<select id="cl_hijos" name="cl_hijos" class="form-control" <%= locals.estado_control_formulario %>>
+        			<% if (locals.valor_cl_hijos.seleccionado == "no_seleccionado") { %>
+        		    	<option value="no_seleccionado" selected>Selecciona</option>
+        		    <% } else { %>
+        		    	<option value="no_seleccionado">Selecciona</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "0") { %>
+        		    	<option value="0" selected>0</option>
+        		    <% } else { %>
+        		    	<option value="0">0</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "1") { %>
+        		    	<option value="1" selected>1</option>
+        		    <% } else { %>
+        		    	<option value="1">1</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "2") { %>
+        		    	<option value="2" selected>2</option>
+        		    <% } else { %>
+        		    	<option value="2">2</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "3") { %>
+        		    	<option value="3" selected>3</option>
+        		    <% } else { %>
+        		    	<option value="3">3</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "4") { %>
+        		    	<option value="4" selected>4</option>
+        		    <% } else { %>
+        		    	<option value="4">4</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "5") { %>
+        		    	<option value="5" selected>5</option>
+        		    <% } else { %>
+        		    	<option value="5">5</option>
+        			<% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "6") { %>
+        		    	<option value="6" selected>6</option>
+        		    <% } else { %>
+        		    	<option value="6">6</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "7") { %>
+        		    	<option value="7" selected>7</option>
+        		    <% } else { %>
+        		    	<option value="7">7</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "8") { %>
+        		    	<option value="8" selected>8</option>
+        		    <% } else { %>
+        		    	<option value="8">8</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "9") { %>
+        		    	<option value="9" selected>9</option>
+        		    <% } else { %>
+        		    	<option value="9">9</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_hijos.seleccionado == "10") { %>
+        		    	<option value="10" selected>10</option>
+        		    <% } else { %>
+        		    	<option value="10">10</option>
+        		    <% } %>
+        		</select>
+        	</div>
+    	</div>
+    	<div class="col-md-4">
+            <div class="form-group">
+            	<label for="cl_nombre_conyuge">Nombre(s) conyuge</label> 
+            	<input id="cl_nombre_conyuge" name="cl_nombre_conyuge" type="text" class="form-control" value="<%= locals.valor_cl_nombre_conyuge %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+            	<label for="cl_apellido_conyuge">Apellido(s) conyuge</label> 
+            	<input id="cl_apellido_conyuge" name="cl_apellido_conyuge" type="text" class="form-control" value="<%= locals.valor_cl_apellido_conyuge %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        	<div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Residencia -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Residencia</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+            	<label for="cl_direccion_residencia">Direccion residencia</label> 
+            	<input id="cl_direccion_residencia" name="cl_direccion_residencia" type="text" class="form-control" value="<%= locals.valor_cl_direccion_residencia %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+            	<label for="cl_codigo_postal">Codigo postal</label> 
+            	<input id="cl_codigo_postal" name="cl_codigo_postal" type="text" class="form-control" value="<%= locals.valor_cl_codigo_postal %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+            	<label for="cl_ciudad">Ciudad</label> 
+            	<input id="cl_ciudad" name="cl_ciudad" type="text" class="form-control" value="<%= locals.valor_cl_ciudad %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_pais">Pais</label> 
+            	<input id="cl_pais" name="cl_pais" type="text" class="form-control" value="<%= locals.valor_cl_pais %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-3">
+    		<div class="form-group">
+    			<label for="cl_tiempo_residiendo">Tiempo residiendo</label>
+    			<select id="cl_tiempo_residiendo" name="cl_tiempo_residiendo" class="form-control" <%= locals.estado_control_formulario %>>
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "0") { %>
+    					<option value="0" selected>Selecciona</option>
+    				<% } else { %>
+    					<option value="0">Selecciona</option>
+    				<% } %>
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "1") { %>
+    				    <option value="1" selected>Menos de seis meses</option>
+    				<% } else { %>
+    					<option value="1">Menos de seis meses</option>
+    				<% } %>   
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "2") { %>
+    				    <option value="2" selected>Entre 6 meses y 1 año</option>
+    				<% } else { %>
+    					<option value="2">Entre 6 meses y 1 año</option>
+    				<% } %>  
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "3") { %>
+    				    <option value="3" selected>Entre 1 y 2 años</option>
+    				<% } else { %>
+    					<option value="3">Entre 1 y 2 años</option>
+    				<% } %>
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "4") { %>
+    				    <option value="4" selected>Entre 2 y 3 años</option>
+    				<% } else { %>
+    					<option value="4">Entre 2 y 3 años</option>
+    				<% } %>
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "5") { %>
+    				    <option value="5" selected>Entre 3 y 4 años</option>
+    				<% } else { %>
+    					<option value="5">Entre 3 y 4 años</option>
+    				<% } %>
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "6") { %>
+    				    <option value="6" selected>Entre 4 y 5 años</option>
+    				<% } else { %>
+    					<option value="6">Entre 4 y 5 años</option>
+    				<% } %>
+    				<% if (locals.valor_cl_tiempo_residiendo.seleccionado == "7") { %>
+    				    <option value="7" selected>Mas de 5 años</option>
+    				<% } else { %>    
+    					<option value="7">Mas de 5 años</option>
+    				<% } %>
+    			</select>
+    		</div>
+    	</div>
+    	<div class="col-md-2">
+    		<div class="form-group">
+    			<label for="cl_propiedad">Propiedad</label>
+    			<select id="cl_propiedad" name="cl_propiedad" class="form-control" <%= locals.estado_control_formulario %>>
+    				<% if (locals.valor_cl_propiedad.seleccionado == "0") { %>
+    					<option value="0" selected>Selecciona</option>
+    				<% } else { %>
+    					<option value="0">Selecciona</option>
+    				<% } %>	
+    				<% if (locals.valor_cl_propiedad.seleccionado == "1") { %>
+    			    	<option value="1" selected>Propia</option>
+    			    <% } else { %>
+    			    	<option value="1">Propia</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_propiedad.seleccionado == "2") { %>
+    			    	<option value="2" selected>Alquilada</option>
+    			    <% } else { %>
+    			    	<option value="2">Alquilada</option>
+    			    <% } %>
+    			</select>
+    		</div>
+    	</div>
+    	<div class="col-md-2">
+    	    <div class="form-group">
+    	    	<label for="cl_pago_mensual">Pago mensual RD$</label> 
+    	    	<input id="cl_pago_mensual" name="cl_pago_mensual" type="text" class="form-control" value="<%= locals.valor_cl_pago_mensual %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+            	<label for="cl_telefono_residencia">Telefono residencia</label> 
+            	<input id="cl_telefono_residencia" name="cl_telefono_residencia" type="text" class="form-control" value="<%= locals.valor_cl_telefono_residencia %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_nombre_propietario">Nombre(s) propietario</label> 
+            	<input id="cl_nombre_propietario" name="cl_nombre_propietario" type="text" class="form-control" value="<%= locals.valor_cl_nombre_propietario %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_apellido_propietario">Apellido(s) propietario</label> 
+            	<input id="cl_apellido_propietario" name="cl_apellido_propietario" type="text" class="form-control" value="<%= locals.valor_cl_apellido_propietario %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Informacion academica y laboral -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Informacion academica y laboral</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<h4>Solicitante</h4>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        	<div class="form-group">
+        		<label for="cl_nivel_academico">Nivel academico</label>
+        		<select id="cl_nivel_academico" name="cl_nivel_academico" class="form-control" <%= locals.estado_control_formulario %>>
+        			<% if (locals.valor_cl_nivel_academico.seleccionado == "0") { %>
+        				<option value="0">Selecciona</option>
+        			<% } else { %>
+        				<option value="0">Selecciona</option>
+        			<% } %>
+        			<% if (locals.valor_cl_nivel_academico.seleccionado == "1") { %>
+        		    	<option value="1" selected>Nivel basico</option>
+        		    <% } else { %>
+        		    	<option value="1">Nivel basico</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_nivel_academico.seleccionado == "2") { %>
+        		    	<option value="2" selected>Tecnico</option>
+        		    <% } else { %>	
+        		    	<option value="2">Tecnico</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_nivel_academico.seleccionado == "3") { %>
+        		    	<option value="3" selected>Bachiller</option>
+        		    <% } else { %>
+        		    	<option value="3">Bachiller</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_nivel_academico.seleccionado == "4") { %>
+        		    	<option value="4" selected>Universitario</option>
+        		    <% } else { %>	
+        		    	<option value="4">Universitario</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_nivel_academico.seleccionado == "5") { %>
+        		    	<option value="5" selected>Post-grado/Maestria</option>
+        		    <% } else { %>
+        		    	<option value="5">Post-grado/Maestria</option>
+        		    <% } %>
+        		</select>
+        	</div>
+    	</div>
+    	<div class="col-md-4">
+    	    <div class="form-group">
+    	    	<label for="cl_titulo">Titulo</label> 
+    	    	<input id="cl_titulo" name="cl_titulo" type="text" class="form-control" value="<%= locals.valor_cl_titulo %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+    	</div>
+    	<div class="col-md-5">
+    	    <div class="form-group">
+    	    	<label for="cl_centro_estudio">Centro de estudio</label> 
+    	    	<input id="cl_centro_estudio" name="cl_centro_estudio" type="text" class="form-control" value="<%= locals.valor_cl_centro_estudio %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        	<div class="form-group">
+    		    <label for="cl_empresa">Empresa para la que trabaja</label> 
+        		<input id="cl_empresa" name="cl_empresa" type="text" class="form-control" value="<%= locals.valor_cl_empresa %>" <%= locals.estado_control_formulario %>>
+        	</div>
+    	</div>
+        <div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_telefono_empresa">Telefono empresa</label> 
+            	<input id="cl_telefono_empresa" name="cl_telefono_empresa" type="text" class="form-control" value="<%= locals.valor_cl_telefono_empresa %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    	<div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_cargo">Cargo</label> 
+            	<input id="cl_cargo" name="cl_cargo" type="text" class="form-control" value="<%= locals.valor_cl_cargo %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        	<div class="form-group">
+        		<label for="cl_antiguedad">Antiguedad</label>
+        		<select id="cl_antiguedad" name="cl_antiguedad" class="form-control" <%= locals.estado_control_formulario %>>
+        			<% if (locals.valor_cl_antiguedad.seleccionado == "0") { %>
+        				<option value="0" selected>Selecciona</option>
+        			<% } else { %>
+        				<option value="0">Selecciona</option>
+        			<% } %>	
+        			<% if (locals.valor_cl_antiguedad.seleccionado == "1") { %>
+        		    	<option value="1" selected>Menos de seis meses</option>
+        		    <% } else { %>	
+        		    	<option value="1">Menos de seis meses</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_antiguedad.seleccionado == "2") { %>
+        		    	<option value="2" selected>Entre 6 meses y 1 año</option>
+        		    <% } else { %>	
+        		    	<option value="2">Entre 6 meses y 1 año</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_antiguedad.seleccionado == "3") { %>
+        		    	<option value="3" selected>Entre 1 y 2 años</option>
+        		    <% } else { %>	
+        		    	<option value="3">Entre 1 y 2 años</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_antiguedad.seleccionado == "4") { %>
+        		    	<option value="4" selected>Entre 2 y 3 años</option>
+        		    <% } else { %>	
+        		    	<option value="4">Entre 2 y 3 años</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_antiguedad.seleccionado == "5") { %>
+        		    	<option value="5" selected>Entre 3 y 4 años</option>
+        		    <% } else { %>	
+        		    	<option value="5">Entre 3 y 4 años</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_antiguedad.seleccionado == "6") { %>
+        		    	<option value="6" selected>Entre 4 y 5 años</option>
+        		    <% } else { %>	
+        		    	<option value="6">Entre 4 y 5 años</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_antiguedad.seleccionado == "7") { %>
+        		    	<option value="7" selected>Mas de 5 años</option>
+        		    <% } else { %>	
+        		    	<option value="7">Mas de 5 años</option>
+        		    <% } %>	
+        		</select>
+        	</div>
+    	</div>
+        <div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_ingreso_mensual">Ingreso mensual RD$</label> 
+            	<input id="cl_ingreso_mensual" name="cl_ingreso_mensual" type="text" class="form-control" value="<%= locals.valor_cl_ingreso_mensual %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-3">
+        	<div class="form-group">
+        		<label for="cl_cobro">Forma de cobro</label>
+        		<select id="cl_cobro" name="cl_cobro" class="form-control" <%= locals.estado_control_formulario %>>
+        				<% if (locals.valor_cl_cobro.seleccionado == "0") { %>
+            	    		<option value="0" selected>Selecciona</option>
+            	    	<% } else { %>
+            	    		<option value="0">Selecciona</option>
+            	    	<% } %>
+            		<% for (var i in locals.lista_cobros) { %>
+            			<% if (locals.valor_cl_cobro.seleccionado == locals.lista_cobros[i].id_forma_cobro) { %>
+            	    		<option value=<%= locals.lista_cobros[i].id_forma_cobro %> selected><%- locals.lista_cobros[i].nombre_forma_cobro %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_cobros[i].id_forma_cobro %>><%- locals.lista_cobros[i].nombre_forma_cobro %></option>
+            	    	<% } %>
+    				<% } %>	
+        		</select>
+        	</div>
+    	</div>
+    </div>
+    <br>
+    <!-- Conyuge -->
+    <div class="row">
+    	<div class="col-md-12">
+    		<h4>Conyuge (Este apartado se activa al seleccionar Estado civil: Casado)</h4>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        	<div class="form-group">
+        		<label for="cl_conyuge_nivel_academico">Nivel academico</label>
+        		<select id="cl_conyuge_nivel_academico" name="cl_conyuge_nivel_academico" class="form-control" <%= locals.estado_control_formulario %>>
+        		    <% if (locals.valor_cl_conyuge_nivel_academico.seleccionado == "0") { %>
+        		    	<option value="0">Selecciona</option>
+        			<% } else { %>
+        				<option value="0">Selecciona</option>
+        			<% } %>
+        			<% if (locals.valor_cl_conyuge_nivel_academico.seleccionado == "1") { %>
+        				<option value="1" selected>Nivel basico</option>
+        		    <% } else { %>
+        		    	<option value="1">Nivel basico</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_conyuge_nivel_academico.seleccionado == "2") { %>
+        		    	<option value="2" selected>Tecnico</option>
+        		    <% } else { %>	
+        		    	<option value="2">Tecnico</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_conyuge_nivel_academico.seleccionado == "3") { %>
+        		    	<option value="3" selected>Bachiller</option>
+        		    <% } else { %>
+        		    	<option value="3">Bachiller</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_conyuge_nivel_academico.seleccionado == "4") { %>
+        		    	<option value="4" selected>Universitario</option>
+        		    <% } else { %>	
+        		    	<option value="4">Universitario</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_conyuge_nivel_academico.seleccionado == "5") { %>
+        		    	<option value="5" selected>Post-grado/Maestria</option>
+        		    <% } else { %>
+        		    	<option value="5">Post-grado/Maestria</option>
+        		    <% } %>>
+        		</select>
+        	</div>
+    	</div>
+        <div class="col-md-4">
+            <div class="form-group">
+            	<label for="cl_conyuge_titulo">Titulo</label> 
+            	<input id="cl_conyuge_titulo" name="cl_conyuge_titulo" type="text" class="form-control" value="<%= locals.valor_cl_conyuge_titulo %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    	<div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_conyuge_centro_estudio">Centro de estudio</label> 
+            	<input id="cl_conyuge_centro_estudio" name="cl_conyuge_centro_estudio" type="text" class="form-control" value="<%= locals.valor_cl_conyuge_centro_estudio %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-4">
+    		<div class="form-group">
+			    <label for="cl_conyuge_empresa">Empresa para la que trabaja</label> 
+    			<input id="cl_conyuge_empresa" name="cl_conyuge_empresa" type="text" class="form-control" value="<%= locals.valor_cl_conyuge_empresa %>" <%= locals.estado_control_formulario %>>
+    		</div>
+    	</div>
+    	<div class="col-md-3">
+    	    <div class="form-group">
+    	    	<label for="cl_conyuge_telefono_empresa">Telefono empresa</label> 
+    	    	<input id="cl_conyuge_telefono_empresa" name="cl_conyuge_telefono_empresa" type="text" class="form-control" value="<%= locals.valor_cl_conyuge_telefono_empresa %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+    	</div>
+    	<div class="col-md-5">
+    	    <div class="form-group">
+    	    	<label for="cl_conyuge_cargo">Cargo</label> 
+    	    	<input id="cl_conyuge_cargo" name="cl_conyuge_cargo" type="text" class="form-control" value="<%= locals.valor_cl_conyuge_cargo %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        	<div class="form-group">
+        		<label for="cl_conyuge_antiguedad">Antiguedad</label>
+        		<select id="cl_conyuge_antiguedad" name="cl_conyuge_antiguedad" class="form-control" <%= locals.estado_control_formulario %>>
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "0") { %>
+        		    	<option value="0" selected>Selecciona</option>
+        			<% } else { %>
+        				<option value="0">Selecciona</option>
+        			<% } %>	
+        			<% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "1") { %>
+        		    	<option value="1" selected>Menos de seis meses</option>
+        		    <% } else { %>	
+        		    	<option value="1">Menos de seis meses</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "2") { %>
+        		    	<option value="2" selected>Entre 6 meses y 1 año</option>
+        		    <% } else { %>	
+        		    	<option value="2">Entre 6 meses y 1 año</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "3") { %>
+        		    	<option value="3" selected>Entre 1 y 2 años</option>
+        		    <% } else { %>	
+        		    	<option value="3">Entre 1 y 2 años</option>
+        		    <% } %>
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "4") { %>
+        		    	<option value="4" selected>Entre 2 y 3 años</option>
+        		    <% } else { %>	
+        		    	<option value="4">Entre 2 y 3 años</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "5") { %>
+        		    	<option value="5" selected>Entre 3 y 4 años</option>
+        		    <% } else { %>	
+        		    	<option value="5">Entre 3 y 4 años</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "6") { %>
+        		    	<option value="6" selected>Entre 4 y 5 años</option>
+        		    <% } else { %>	
+        		    	<option value="6">Entre 4 y 5 años</option>
+        		    <% } %>	
+        		    <% if (locals.valor_cl_conyuge_antiguedad.seleccionado == "7") { %>
+        		    	<option value="7" selected>Mas de 5 años</option>
+        		    <% } else { %>	
+        		    	<option value="7">Mas de 5 años</option>
+        		    <% } %>	
+        		</select>
+        	</div>
+    	</div>
+        <div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_conyuge_ingreso_mensual">Ingreso mensual RD$</label> 
+            	<input id="cl_conyuge_ingreso_mensual" name="cl_conyuge_ingreso_mensual" type="text" class="form-control" value="<%= locals.valor_cl_conyuge_ingreso_mensual %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-3">
+        	<div class="form-group">
+        		<label for="cl_conyuge_cobro">Forma de cobro</label>
+        		<select id="cl_conyuge_cobro" name="cl_conyuge_cobro" class="form-control" <%= locals.estado_control_formulario %>>
+        				<% if (locals.valor_cl_conyuge_cobro.seleccionado == "0") { %>
+            	    		<option value="0" selected>Selecciona</option>
+            	    	<% } else { %>
+            	    		<option value="0">Selecciona</option>
+            	    	<% } %>
+            		<% for (var i in locals.lista_cobros) { %>
+            			<% if (locals.valor_cl_conyuge_cobro.seleccionado == locals.lista_cobros[i].id_forma_cobro) { %>
+            	    		<option value=<%= locals.lista_cobros[i].id_forma_cobro %> selected><%- locals.lista_cobros[i].nombre_forma_cobro %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_cobros[i].id_forma_cobro %>><%- locals.lista_cobros[i].nombre_forma_cobro %></option>
+            	    	<% } %>
+    				<% } %>
+        		</select>
+        	</div>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Otras fuentes de ingresos e informacion financiera -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Otras fuentes de ingresos e informacion financiera</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+    		<div class="form-group">
+    			<label for="cl_otra_fuente_ingresos">Fuente de ingresos</label>
+    			<select id="cl_otra_fuente_ingresos" name="cl_otra_fuente_ingresos" class="form-control" <%= locals.estado_control_formulario %>>
+    				<% if (locals.valor_cl_otra_fuente_ingresos.seleccionado == "0") { %>
+    					<option value="0" selected>Selecciona</option>
+    			    <% } else { %>
+    			    	<option value="0">Selecciona</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_otra_fuente_ingresos.seleccionado == "1") { %>
+    			    	<option value="1" selected>Empleado privado</option>
+    			    <% } else { %>
+    			    	<option value="1">Empleado privado</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_otra_fuente_ingresos.seleccionado == "2") { %>
+    			    	<option value="2" selected>Remesas</option>
+    			    <% } else { %>
+    			    	<option value="2">Remesas</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_otra_fuente_ingresos.seleccionado == "3") { %>
+    			    	<option value="3" selected>Independiente</option>
+    			    <% } else { %>
+    			    	<option value="3">Independiente</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_otra_fuente_ingresos.seleccionado == "4") { %>
+    			    	<option value="4" selected>Extras</option>
+    			    <% } else { %>
+    			    	<option value="4">Extras</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_otra_fuente_ingresos.seleccionado == "5") { %>
+    			    	<option value="5" selected>Otros ingresos</option>
+    			    <% } else { %>
+    			    	<option value="5">Otros ingresos</option>
+    			    <% } %>
+    			</select>
+    		</div>
+    	</div>
+    	<div class="col-md-4">
+    	    <div class="form-group">
+    	    	<label for="cl_otra_ocupacion">Ocupacion</label> 
+    	    	<input id="cl_otra_ocupacion" name="cl_otra_ocupacion" type="text" class="form-control" value="<%= locals.valor_cl_otra_ocupacion %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+    	</div>
+    	<div class="col-md-5">
+    	    <div class="form-group">
+    	    	<label for="cl_otra_empresa">Empresa para la que trabaja</label> 
+    	    	<input id="cl_otra_empresa" name="cl_otra_empresa" type="text" class="form-control" value="<%= locals.valor_cl_otra_empresa %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_telefono_otra_empresa">Telefono empresa</label> 
+            	<input id="cl_telefono_otra_empresa" name="cl_telefono_otra_empresa" type="text" class="form-control" value="<%= locals.valor_cl_telefono_otra_empresa %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+            	<label for="cl_otro_ingreso_mensual">Ingreso mensual RD$</label> 
+            	<input id="cl_otro_ingreso_mensual" name="cl_otro_ingreso_mensual" type="text" class="form-control" value="<%= locals.valor_cl_otro_ingreso_mensual %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+    	<div class="col-md-12">
+    		<h4>Cuentas bancarias</h4>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-7">
+            <div class="form-group">
+            	<label for="cl_nombre_banco_1">Nombre del banco</label> 
+            	<input id="cl_nombre_banco_1" name="cl_nombre_banco_1" type="text" class="form-control" value="<%= locals.valor_cl_nombre_banco_1 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_numero_cuenta_1">N° de cuenta (IBAN)</label> 
+            	<input id="cl_numero_cuenta_1" name="cl_numero_cuenta_1" type="text" class="form-control" value="<%= locals.valor_cl_numero_cuenta_1 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-7">
+            <div class="form-group">
+            	<label for="cl_nombre_banco_2">Nombre del banco</label> 
+            	<input id="cl_nombre_banco_2" name="cl_nombre_banco_2" type="text" class="form-control" value="<%= locals.valor_cl_nombre_banco_2 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_numero_cuenta_2">N° de cuenta (IBAN)</label> 
+            	<input id="cl_numero_cuenta_2" name="cl_numero_cuenta_2" type="text" class="form-control" value="<%= locals.valor_cl_numero_cuenta_2 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+    	<div class="col-md-12">
+    		<h4>Tarjetas de credito</h4>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-7">
+            <div class="form-group">
+            	<label for="cl_nombre_banco_tarjeta_1">Nombre del banco</label> 
+            	<input id="cl_nombre_banco_tarjeta_1" name="cl_nombre_banco_tarjeta_1" type="text" class="form-control" value="<%= locals.valor_cl_nombre_banco_tarjeta_1 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_limite_credito_tarjeta_1">Limite credito RD$</label> 
+            	<input id="cl_limite_credito_tarjeta_1" name="cl_limite_credito_tarjeta_1" type="text" class="form-control" value="<%= locals.valor_cl_limite_credito_tarjeta_1 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-7">
+            <div class="form-group">
+            	<label for="cl_nombre_banco_tarjeta_2">Nombre del banco</label> 
+            	<input id="cl_nombre_banco_tarjeta_2" name="cl_nombre_banco_tarjeta_2" type="text" class="form-control" value="<%= locals.valor_cl_nombre_banco_tarjeta_2 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            	<label for="cl_limite_credito_tarjeta_2">Limite credito RD$</label> 
+            	<input id="cl_limite_credito_tarjeta_2" name="cl_limite_credito_tarjeta_2" type="text" class="form-control" value="<%= locals.valor_cl_limite_credito_tarjeta_2 %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Datos del vehiculo -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Datos del vehiculo</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        	<div class="form-group">
+    		    <label for="cl_marca_vehiculo">Marca</label> 
+        		<input id="cl_marca_vehiculo" name="cl_marca_vehiculo" type="text" class="form-control" value="<%= locals.valor_cl_marca_vehiculo %>" <%= locals.estado_control_formulario %>>
+        	</div>
+    	</div>
+    	<div class="col-md-6">
+    	    <div class="form-group">
+    	    	<label for="cl_modelo_vehiculo">Modelo</label> 
+    	    	<input id="cl_modelo_vehiculo" name="cl_modelo_vehiculo" type="text" class="form-control" value="<%= locals.valor_cl_modelo_vehiculo %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+    	</div>
+    	<div class="col-md-2">
+    	    <div class="form-group">
+    	    	<label for="cl_ano_vehiculo">Año</label> 
+    	    	<input id="cl_ano_vehiculo" name="cl_ano_vehiculo" type="text" class="form-control" value="<%= locals.valor_cl_ano_vehiculo %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-2">
+            <div class="form-group">
+            	<label for="cl_placa_vehiculo">Placa</label> 
+            	<input id="cl_placa_vehiculo" name="cl_placa_vehiculo" type="text" class="form-control" value="<%= locals.valor_cl_placa_vehiculo %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_valor_vehiculo">Valor RD$</label> 
+            	<input id="cl_valor_vehiculo" name="cl_valor_vehiculo" type="text" class="form-control" value="<%= locals.valor_cl_valor_vehiculo %>" <%= locals.estado_control_formulario %>>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Referencias -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Referencias personales y/o comerciales</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        	<div class="form-group">
+    		    <label for="cl_nombre_completo_relacion_1">Nombre completo</label> 
+        		<input id="cl_nombre_completo_relacion_1" name="cl_nombre_completo_relacion_1" type="text" class="form-control" value="<%= locals.valor_cl_nombre_completo_relacion_1 %>" <%= locals.estado_control_formulario %>>
+        	</div>
+    	</div>
+    	<div class="col-md-3">
+    	    <div class="form-group">
+    	    	<label for="cl_tipo_relacion_1">Tipo relacion</label>
+    	    	<select id="cl_tipo_relacion_1" name="cl_tipo_relacion_1" class="form-control" <%= locals.estado_control_formulario %>>
+    				<% if (locals.valor_cl_tipo_relacion_1.seleccionado == "0") { %>
+    					<option value="0" selected>Selecciona</option>
+    			    <% } else { %>
+    			    	<option value="0">Selecciona</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_tipo_relacion_1.seleccionado == "1") { %>
+    			    	<option value="1" selected>Amistad</option>
+    			    <% } else { %>
+    			    	<option value="1">Amistad</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_tipo_relacion_1.seleccionado == "2") { %>
+    			    	<option value="2" selected>Laboral</option>
+    			    <% } else { %>
+    			    	<option value="2">Laboral</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_tipo_relacion_1.seleccionado == "3") { %>
+    			    	<option value="3" selected>Familia</option>
+    			    <% } else { %>
+    			    	<option value="3">Familia</option>
+    			    <% } %>	
+    			</select>
+    	    </div>
+    	</div>
+    	<div class="col-md-3">
+    	    <div class="form-group">
+    	    	<label for="cl_telefono_relacion_1">Telefono</label> 
+    	    	<input id="cl_telefono_relacion_1" name="cl_telefono_relacion_1" type="text" class="form-control" value="<%= locals.valor_cl_telefono_relacion_1 %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        	<div class="form-group">
+    		    <label for="cl_nombre_completo_relacion_2">Nombre completo</label> 
+        		<input id="cl_nombre_completo_relacion_2" name="cl_nombre_completo_relacion_2" type="text" class="form-control" value="<%= locals.valor_cl_nombre_completo_relacion_2 %>" <%= locals.estado_control_formulario %>>
+        	</div>
+    	</div>
+    	<div class="col-md-3">
+    	    <div class="form-group">
+    	    	<label for="cl_tipo_relacion_2">Tipo relacion</label> 
+    	    	<select id="cl_tipo_relacion_2" name="cl_tipo_relacion_2" class="form-control" <%= locals.estado_control_formulario %>>
+    				<% if (locals.valor_cl_tipo_relacion_2.seleccionado == "0") { %>
+    					<option value="0" selected>Selecciona</option>
+    			    <% } else { %>
+    			    	<option value="0">Selecciona</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_tipo_relacion_2.seleccionado == "1") { %>
+    			    	<option value="1" selected>Amistad</option>
+    			    <% } else { %>
+    			    	<option value="1">Amistad</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_tipo_relacion_2.seleccionado == "2") { %>
+    			    	<option value="2" selected>Laboral</option>
+    			    <% } else { %>
+    			    	<option value="2">Laboral</option>
+    			    <% } %>	
+    			    <% if (locals.valor_cl_tipo_relacion_2.seleccionado == "3") { %>
+    			    	<option value="3" selected>Familia</option>
+    			    <% } else { %>
+    			    	<option value="3">Familia</option>
+    			    <% } %>	
+    			</select>
+    	    </div>
+    	</div>
+    	<div class="col-md-3">
+    	    <div class="form-group">
+	    	    <label for="cl_telefono_relacion_2">Telefono</label> 
+    	    	<input id="cl_telefono_relacion_2" name="cl_telefono_relacion_2" type="text" class="form-control" value="<%= locals.valor_cl_telefono_relacion_2 %>" <%= locals.estado_control_formulario %>>
+    	    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Grupo de asignacion -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Grupo de asignacion</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-3">
+            <div class="form-group">
+            	<label for="cl_grupo">Grupo</label>
+            	<select id="cl_grupo" name="cl_grupo" class="form-control" <%= locals.estado_control_formulario %>> <!-- Generado a partir de DB -->
+            		<% if (locals.valor_cl_grupo.seleccionado == "0") { %>
+            	    	<option value="0" selected>Selecciona</option>
+            	    <% } else { %>
+            	    	<option value="0">Selecciona</option>
+            	    <% } %>
+            		<% for (var i in locals.lista_grupos) { %>
+            			<% if (locals.valor_cl_grupo.seleccionado == locals.lista_grupos[i].id_grupo) { %>
+            	    		<option value=<%= locals.lista_grupos[i].id_grupo %> selected><%- locals.lista_grupos[i].nombre_grupo %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_grupos[i].id_grupo %>><%- locals.lista_grupos[i].nombre_grupo %></option>
+            	    	<% } %>
+    				<% } %>	
+            	</select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Informacion adiccional -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<h3>Informacion adiccional</h3>
+    		<br>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="form-group">
+    			<label for="cl_comentarios">Comentarios</label> 
+    			<textarea id="cl_comentarios" name="cl_comentarios" class="form-control" rows="5" <%= locals.estado_control_formulario %>><%= locals.valor_cl_comentarios %></textarea>
+    		</div>
+    	</div>
+    </div>
+    
+    <!-- AÑADIR PLUGIN UPLOAD ARCHIVOS -->
+    
+    <div class="row">
+    	<br>
+        <div class="col-md-12">
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Botones -->
+    
+    <div class="row <%= locals.visibilidad %>">
+        <div class="col-md-12 text-right">
+            <div class="form-group">
+            	<a href="#ventana1" class="btn btn-default" data-toggle="modal">Cancelar</a>
+            	<button class="btn btn-primary" type="submit" id="valida_formulario">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <hr class="<%= locals.visibilidad %>">
+</form>

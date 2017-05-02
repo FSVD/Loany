@@ -1,0 +1,177 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4><b>Cliente: </b><%= locals.valor_nombre_cliente %>&nbsp;<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>&nbsp;<b> Solicitud Nº: </b><%= locals.valor_sl_id %> - <a href="/visualizar_solicitud/:<%= locals.valor_sl_id %>/:<%= locals.valor_cl_id %>/:<%= locals.valor_cl_id_historial %>">Ver ficha</a></h4>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h4><% if (locals.valor_pr_id != "") { %><b>Prestamo: </b><%= locals.valor_pr_id %><% } %></h4>
+		<br>
+	</div>
+</div>
+
+<form id="<%= locals.valor_id_formulario %>" <%= locals.valor_action_formulario %> <%= locals.valor_metodo_formulario %>>
+
+	<input type="hidden" name="pr_id" value="<%= locals.valor_pr_id %>">
+	<input type="hidden" name="sl_id" value="<%= locals.valor_sl_id %>">
+	<input type="hidden" name="pd_id" value="<%= locals.valor_pd_id %>">
+	<input type="hidden" name="cl_id" value="<%= locals.valor_cl_id %>">
+    <input type="hidden" name="cl_id_historial" value="<%= locals.valor_cl_id_historial %>">
+    
+	<div class="row">
+    	<div class="col-md-12">
+    		<h3>Datos prestamo</h3>
+    		<br>
+    	</div>
+    </div>
+	<div class="row">
+	<div class="col-md-2">
+	    <div class="form-group">
+	    	<label for="pr_fecha_activacion">Fecha activacion</label>
+	    	<div class="input-group">
+	    	    <div class="input-group-addon add-on">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+	    	    <input id="pr_fecha_activacion" name="pr_fecha_activacion" type="text" class="form-control" value="<%= locals.valor_pr_fecha_activacion %>" <%= locals.estado_control_formulario %> readonly>
+            </div>
+	    </div>
+	</div>
+	<div class="col-md-4">
+	        <div class="form-group">
+	        	<label for="pr_nombre_producto">Producto</label> 
+	        	<input id="pr_nombre_producto" name="pr_nombre_producto" type="text" class="form-control" value="<%= locals.valor_pr_nombre_producto %>" <%= locals.estado_control_formulario %> readonly>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_gastos_activacion">Gastos activacion RD$</label>
+	        	<input id="pr_gastos_activacion" name="pr_gastos_activacion" type="text" class="form-control" value="<%= locals.valor_pr_gastos_activacion %>" <%= locals.estado_control_formulario %> readonly>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_cantidad">Cantidad RD$</label>
+	        	<input id="pr_cantidad" name="pr_cantidad" type="text" class="form-control" value="<%= locals.valor_pr_cantidad %>" <%= locals.estado_control_formulario %> readonly>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_interes_mensual">Interes mensual %</label>
+	        	<input id="pr_interes_mensual" name="pr_interes_mensual" type="text" class="form-control" value="<%= locals.valor_pr_interes_mensual %>" <%= locals.estado_control_formulario %> readonly>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_amortizacion">Amortizacion</label>
+	        	<select id="pr_amortizacion" name="pr_amortizacion" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% if (locals.valor_pr_amortizacion.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% for (var i in locals.lista_amortizaciones) { %>
+            			<% if (locals.valor_pr_amortizacion.seleccionado == locals.lista_amortizaciones[i].id_amortizacion) { %>
+            	    		<option value=<%= locals.lista_amortizaciones[i].id_amortizacion %> selected><%= locals.lista_amortizaciones[i].nombre_amortizacion %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_amortizaciones[i].id_amortizacion %>><%= locals.lista_amortizaciones[i].nombre_amortizacion %></option>
+            	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_cuotas">Cuotas</label>
+	        	<select id="pr_cuotas" name="pr_cuotas" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% if (locals.valor_pr_cuotas.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado" >Selecciona</option>
+	        	    <% } %>
+	        	    
+	        	    <% for (var i = 1; i <= locals.pd_max_cuotas; i++) { %>
+            			<% if (locals.valor_pr_cuotas.seleccionado == i) { %>
+	        	    		<option value="<%= i %>" selected><%= i %></option>
+	        	    	<% } else { %>
+	        	    		<option value="<%= i %>" ><%= i %></option>
+	        	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_forma_pago">Forma de pago</label>
+	        	<select id="pr_forma_pago" name="pr_forma_pago" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% if (locals.valor_pr_forma_pago.seleccionado == "no_seleccionado") { %>
+	        	    	<option value="no_seleccionado" selected>Selecciona</option>
+	        	    <% } else { %>
+	        	    	<option value="no_seleccionado">Selecciona</option>
+	        	    <% } %>
+	        	    <% for (var i in locals.lista_id_formas_pago) { %>
+            			<% if (locals.valor_pr_forma_pago.seleccionado == locals.lista_id_formas_pago[i]) { %>
+            	    		<option value=<%= locals.lista_id_formas_pago[i] %> selected><%= locals.lista_nombres_formas_pago[i] %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_id_formas_pago[i] %>><%= locals.lista_nombres_formas_pago[i] %></option>
+            	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_total_devolucion">Total a devolver RD$</label>
+	        	<input id="pr_total_devolucion" name="pr_total_devolucion" type="text" class="form-control" value="<%= locals.valor_pr_total_devolucion %>" <%= locals.estado_control_formulario %> readonly>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="pr_fecha_caducidad">Fecha caducidad</label>
+	        	<div class="input-group">
+	        	    <div class="input-group-addon add-on">
+                    	<span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+	        	    <input id="pr_fecha_caducidad" name="pr_fecha_caducidad" type="text" class="form-control" placeholder="dd/mm/aaaa" value="<%= locals.valor_pr_fecha_caducidad %>" <%= locals.estado_control_formulario %> readonly>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group <%= locals.visibilidad_pr_fecha_finalizacion %>"> <!-- Al finalizarse un prestamo sera mostrado el campo Fecha finalizacion-->
+	        	<label for="pr_fecha_finalizacion">Fecha finalizacion</label>
+	        	<div class="input-group">
+	        	    <div class="input-group-addon add-on">
+                    	<span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+	        	    <input id="pr_fecha_finalizacion" name="pr_fecha_finalizacion" type="text" class="form-control" value="<%= locals.valor_pr_fecha_finalizacion %>" <%= locals.estado_control_formulario %> readonly>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+    	<div class="col-md-12">
+    		<div class="form-group">
+    			<label for="pr_comentarios">Comentarios</label> 
+    			<textarea id="pr_comentarios" name="pr_comentarios" class="form-control" rows="5" <%= locals.estado_control_formulario %>><%= locals.valor_pr_comentarios %></textarea>
+    		</div>
+    	</div>
+    </div>
+    <div class="row">
+	    <div class="col-md-12">
+			<hr>
+		</div>
+	</div>
+		
+	<!-- Botones -->
+		
+	<div class="row <%= locals.visibilidad %>">
+	    <div class="col-md-12 text-right">
+	        <div class="form-group">
+	        	<a href="#ventana1" class="btn btn-default" data-toggle="modal">Cancelar</a>
+            	<button class="btn btn-primary" type="submit" id="valida_formulario">Guardar</button>
+	        </div>
+	    </div>
+	</div>
+	<hr class="<%= locals.visibilidad %>">
+</form>

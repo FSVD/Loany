@@ -1,0 +1,159 @@
+<form id="<%= locals.valor_id_formulario %>" <%= locals.valor_action_formulario %> <%= locals.valor_metodo_formulario %>>
+
+	<input type="hidden" name="gr_id" value="<%= locals.valor_gr_id %>">
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Datos grupo</h3>
+			<br>
+		</div>
+	   </div>
+	<div class="row">
+	    <div class="col-md-4">
+	        <div class="form-group">
+	        	<label for="gr_nombre">Nombre grupo</label> 
+	        	<input id="gr_nombre" name="gr_nombre" type="text" class="form-control" value="<%= locals.valor_gr_nombre %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="gr_comision">Comision %</label>
+	        	<select id="gr_comision" name="gr_comision" class="form-control" <%= locals.estado_control_formulario %>>
+	        		<% if (locals.valor_gr_comision.seleccionado == "no_seleccionado") { %>	
+        	    		<option value="no_seleccionado" selected>Selecciona</option>
+        	    	<% } else { %>
+        	    		<option value="no_seleccionado">Selecciona</option>
+        	    	<% } %>
+        	    	<% if (locals.valor_gr_comision.seleccionado == "1") { %>
+	        	    	<option value="1" selected>1</option>
+	        	    <% } else { %>
+	        	    	<option value="1">1</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "1.5") { %>
+	        	    	<option value="1.5" selected>1,5</option>
+	        	    <% } else { %>
+	        	    	<option value="1.5">1,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "2") { %>
+	        	    	<option value="2" selected>2</option>
+	        	    <% } else { %>
+	        	    	<option value="2">2</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "2.5") { %>
+	        	    	<option value="2.5" selected>2,5</option>
+	        	    <% } else { %>
+	        	    	<option value="2.5">2,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "3") { %>
+	        	    	<option value="3" selected>3</option>
+	        	    <% } else { %>
+	        	    	<option value="3">3</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "3.5") { %>
+	        	    	<option value="3.5" selected>3,5</option>
+	        	    <% } else { %>
+	        	    	<option value="3.5">3,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "4") { %>
+	        	    	<option value="4" selected>4</option>
+	        	    <% } else { %>
+	        	    	<option value="4">4</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "4.5") { %>
+	        	    	<option value="4.5" selected>4,5</option>
+	        	    <% } else { %>
+	        	    	<option value="4.5">4,5</option>
+	        	    <% } %>
+	        	    <% if (locals.valor_gr_comision.seleccionado == "5") { %>
+	        	    	<option value="5" selected>5</option>
+	        	    <% } else { %>
+	        	    	<option value="5">5</option>
+	        	    <% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="gr_nombre_referente">Nombre(s) referente</label> 
+	        	<input id="gr_nombre_referente" name="gr_nombre_referente" type="text" class="form-control" value="<%= locals.valor_gr_nombre_referente %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="gr_apellido_referente">Apellido(s) referente</label> 
+	        	<input id="gr_apellido_referente" name="gr_apellido_referente" type="text" class="form-control" value="<%= locals.valor_gr_apellido_referente %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="gr_telefono">Telefono</label> 
+	        	<input id="gr_telefono" name="gr_telefono" type="text" class="form-control" value="<%= locals.valor_gr_telefono %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="gr_fax">Fax</label> 
+	        	<input id="gr_fax" name="gr_fax" type="text" class="form-control" value="<%= locals.valor_gr_fax %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	    <div class="col-md-6">
+	        <div class="form-group">
+	        	<label for="gr_correo_electronico">Correo electronico</label>
+	        	<input id="gr_correo_electronico" name="gr_correo_electronico" type="email" class="form-control" value="<%= locals.valor_gr_correo_electronico %>" <%= locals.estado_control_formulario %>>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+    	<div class="col-md-12">
+    		<div class="form-group">
+    			<label for="gr_comentarios">Comentarios</label> 
+    			<textarea id="gr_comentarios" name="gr_comentarios" class="form-control" rows="5" <%= locals.estado_control_formulario %>><%= locals.valor_gr_comentarios %></textarea>
+    		</div>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5><b>Estado grupo</b></h5>
+		</div>
+	</div>
+	<div class="radio">
+	    <label for="radio1">
+        	<% if (locals.valor_gr_estado.seleccionado == "1") { %>
+	        	<input type="radio" name="gr_estado" id="radio1" value="1" checked <%= locals.estado_control_formulario %>> Activo
+	        <% } else { %>
+	        	<input type="radio" name="gr_estado" id="radio1" value="1" <%= locals.estado_control_formulario %>> Activo
+	        <% } %>	
+	    </label>
+	</div>
+	<div class="radio">
+	    <label for="radio2">
+	        <% if (locals.valor_gr_estado.seleccionado == "2") { %>
+	        	<input type="radio" name="gr_estado" id="radio2" value="2" checked <%= locals.estado_control_formulario %>> Inactivo
+	        <% } else { %>
+	        	<input type="radio" name="gr_estado" id="radio2" value="2" <%= locals.estado_control_formulario %>> Inactivo
+	        <% } %>	
+	    </label>
+	</div>
+	
+	<!-- AÑADIR PLUGIN UPLOAD ARCHIVOS -->
+	
+	<div class="row">
+	    	<div class="col-md-12">
+			<hr>
+		</div>
+	</div>
+		
+	<!-- Botones -->
+		
+	<div class="row <%= locals.visibilidad %>">
+	    <div class="col-md-12 text-right">
+	        <div class="form-group">
+	        	<a href="#ventana1" class="btn btn-default" data-toggle="modal">Cancelar</a>
+            	<button class="btn btn-primary" type="submit" id="valida_formulario">Guardar</button>
+	        </div>
+	    </div>
+	</div>
+	<hr class="<%= locals.visibilidad %>">
+</form>

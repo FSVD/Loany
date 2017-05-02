@@ -1,0 +1,94 @@
+<form id="<%= locals.valor_id_formulario %>" <%= locals.valor_action_formulario %> <%= locals.valor_metodo_formulario %>>
+	<div class="row">
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="mr_cargo">Cargo por mora %</label>
+	        	<select id="mr_cargo" name="mr_cargo" class="form-control"  <%= locals.estado_control_formulario %>>
+        	    	<% for (var i = locals.valor_mr_cargo_minimo; i <= locals.valor_mr_cargo_maximo; i += locals.valor_mr_incremento_cargo) { %>
+            			<% if (locals.valor_mr_cargo.seleccionado == i) { %>
+            	    		<option value=<%= i %> selected><%= i %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= i %>><%= i %></option>
+            	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="mr_dias_gracia">Dias de gracia</label>
+	        	<select id="mr_dias_gracia" name="mr_dias_gracia" class="form-control" <%= locals.estado_control_formulario %>>
+        	    	<% for (var i = locals.valor_mr_dias_gracia_minimo; i <= locals.valor_mr_dias_gracia_maximo; i++) { %>
+            			<% if (locals.valor_mr_dias_gracia.seleccionado == i) { %>
+            	    		<option value=<%= i %> selected><%= i %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= i %>><%= i %></option>
+            	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+		<div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="mr_frecuencia">Frecuencia</label>
+	        	<select id="mr_frecuencia" name="mr_frecuencia" class="form-control" <%= locals.estado_control_formulario %>>
+    	    		<% for (var i in locals.lista_frecuencias_mora) { %>
+            			<% if (locals.valor_mr_frecuencia.seleccionado == locals.lista_frecuencias_mora[i].id_frecuencia_mora) { %>
+            	    		<option value=<%= locals.lista_frecuencias_mora[i].id_frecuencia_mora %> selected><%- locals.lista_frecuencias_mora[i].nombre_frecuencia_mora %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_frecuencias_mora[i].id_frecuencia_mora %>><%- locals.lista_frecuencias_mora[i].nombre_frecuencia_mora %></option>
+            	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="mr_gastos_recobro">Gastos recobro RD$</label>
+	        	<select id="mr_gastos_recobro" name="mr_gastos_recobro" class="form-control" <%= locals.estado_control_formulario %>>
+    	    		<% for (var i = locals.valor_mr_gastos_recobro_minimo; i <= locals.valor_mr_gastos_recobro_maximo; i += locals.valor_mr_incremento_gastos_recobro) { %>
+            			<% if (locals.valor_mr_gastos_recobro.seleccionado == i) { %>
+            	    		<option value=<%= i %> selected><%= i %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= i %>><%= i %></option>
+            	    	<% } %>
+    				<% } %>
+	        	</select>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5><b>Cobro compulsivo</b></h5>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="checkbox">
+		    <label>
+	        	<% if (locals.valor_mr_cobro_compulsivo.seleccionado == "1") { %>
+		        	<input type="checkbox" name="mr_cobro_compulsivo" value="1" checked <%= locals.estado_control_formulario %>> Activo</input>
+		        <% } else { %>
+		        	<input type="checkbox" name="mr_cobro_compulsivo" value="1" <%= locals.estado_control_formulario %>> Activo</input>
+		        <% } %>
+		    </label>
+		</div>
+	</div>
+	
+	<div class="row">
+	    <div class="col-md-12">
+			<hr>
+		</div>
+	</div>
+		
+	<!-- Botones -->
+		
+	<div class="row <%= locals.visibilidad %>">
+	    <div class="col-md-12 text-right">
+	        <div class="form-group">
+	        	<a href="#ventana1" class="btn btn-default" data-toggle="modal">Cancelar</a>
+            	<a href="#ventana2" class="btn btn-primary" data-toggle="modal">Guardar</a>
+	        </div>
+	    </div>
+	</div>
+	<hr class="<%= locals.visibilidad %>">
+</form>

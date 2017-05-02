@@ -1,0 +1,25 @@
+<% include partials/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-6">
+    		<h1><%= locals.nombre_pagina %></h1>
+    	</div>
+    	<div class="col-md-6 text-right">
+    	<br>
+			<button class="btn btn-success" type="submit" form="formulario_mora" id="btn_modifica">Modificar datos</button>
+    	</div>
+    </div>
+    <hr>
+    
+    <!-- Formulario mora -->
+    
+    <% include partials/formulario_mora.html %>
+        	
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include partials/footer.html %>

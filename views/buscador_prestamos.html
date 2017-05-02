@@ -1,0 +1,254 @@
+<% include partials/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+
+	<!-- buscador -->
+
+    <form id="formulario_busqueda_prestamos" action="/buscar_prestamos" method="get">	
+    	<div class="row">
+        	<div class="col-md-12">
+                <h1><%= locals.nombre_pagina %></h1>
+                <hr>
+        	</div>
+    	</div>
+    	<div class="row">
+            <div class="col-md-12">
+                <form action="">
+                	<div class="row">
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_fecha_activacion_desde">Activado (desde)</label>
+                	        	<div class="input-group date" id="selector_pr_fecha_activacion_desde">
+        	        	        	<div class="input-group-addon add-on">
+                        				<span class="glyphicon glyphicon-calendar"></span>
+                        			</div> 
+                	        	    <input id="pr_fecha_activacion_desde" name="pr_fecha_activacion_desde" type="text" class="form-control" placeholder="dd/mm/aaaa">
+                	        	</div>    
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_fecha_activacion_hasta">Activado (hasta)</label>
+                	        	<div class="input-group date" id="selector_pr_fecha_activacion_hasta">
+        	        	        	<div class="input-group-addon add-on">
+                        				<span class="glyphicon glyphicon-calendar"></span>
+                        			</div> 
+                	        	    <input id="pr_fecha_activacion_hasta" name="pr_fecha_activacion_hasta" type="text" class="form-control" placeholder="dd/mm/aaaa">
+                	        	</div>
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_fecha_caducidad_desde">Caduca (desde)</label>
+                	        	<div class="input-group date" id="selector_pr_fecha_caducidad_desde">
+        	        	        	<div class="input-group-addon add-on">
+                        				<span class="glyphicon glyphicon-calendar"></span>
+                        			</div> 
+                	        	    <input id="pr_fecha_caducidad_desde" name="pr_fecha_caducidad_desde" type="text" class="form-control" placeholder="dd/mm/aaaa">
+                	        	</div>    
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_fecha_caducidad_hasta">Caduca (hasta)</label>
+                	        	<div class="input-group date" id="selector_pr_fecha_caducidad_hasta">
+        	        	        	<div class="input-group-addon add-on">
+                        				<span class="glyphicon glyphicon-calendar"></span>
+                        			</div> 
+                	        	    <input id="pr_fecha_caducidad_hasta" name="pr_fecha_caducidad_hasta" type="text" class="form-control" placeholder="dd/mm/aaaa">
+                	        	</div>
+                	        </div>
+                	    </div>
+                		<div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_fecha_finalizacion_desde">Finalizado (desde)</label>
+                	        	<div class="input-group date" id="selector_pr_fecha_finalizacion_desde">
+        	        	        	<div class="input-group-addon add-on">
+                        				<span class="glyphicon glyphicon-calendar"></span>
+                        			</div> 
+                	        	    <input id="pr_fecha_finalizacion_desde" name="pr_fecha_finalizacion_desde" type="text" class="form-control" placeholder="dd/mm/aaaa">
+                	        	</div>
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_fecha_finalizacion_hasta">Finalizado (hasta)</label>
+                	        	<div class="input-group date" id="selector_pr_fecha_finalizacion_hasta">
+        	        	        	<div class="input-group-addon add-on">
+                        				<span class="glyphicon glyphicon-calendar"></span>
+                        			</div> 
+                	        	    <input id="pr_fecha_finalizacion_hasta" name="pr_fecha_finalizacion_hasta" type="text" class="form-control" placeholder="dd/mm/aaaa">
+                	        	</div>
+                	        </div>
+                	    </div>
+                	</div>
+                	<div class="row">
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_cantidad_desde">Cantidad RD$ (desde)</label>
+                	        	<select id="pr_cantidad_desde" name="pr_cantidad_desde" class="form-control">
+    	        	        	    <% if (locals.valor_pr_cantidad_desde.seleccionado == "0") { %>
+    	        	    				<option value="0" selected>Todos</option>
+    	        	    			<% } else { %>
+    	        	    				<option value="0">Todos</option>
+    	        	    			<% } %>
+    	        					<% for (var i in locals.lista_cantidades) { %>
+    	        						<% if (locals.valor_pr_cantidad_desde.seleccionado == locals.lista_cantidades[i]) { %>
+    	        	    					<option value=<%= locals.lista_cantidades[i] %> selected><%- locals.lista_cantidades[i] %></option>
+    	        	    				<% } else { %>
+    	        	    					<option value=<%= locals.lista_cantidades[i] %>><%- locals.lista_cantidades[i] %></option>
+    	        	    				<% } %>
+    								<% } %>	
+    	        	        	</select>
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_cantidad_hasta">Cantidad RD$ (hasta)</label>
+                	        	<select id="pr_cantidad_hasta" name="pr_cantidad_hasta" class="form-control">
+    	        	        	    <% if (locals.valor_pr_cantidad_hasta.seleccionado == "0") { %>
+    	        	    				<option value="0" selected>Todos</option>
+    	        	    			<% } else { %>
+    	        	    				<option value="0">Todos</option>
+    	        	    			<% } %>
+    	        					<% for (var i in locals.lista_cantidades) { %>
+    	        						<% if (locals.valor_pr_cantidad_hasta.seleccionado == locals.lista_cantidades[i]) { %>
+    	        	    					<option value=<%= locals.lista_cantidades[i] %> selected><%- locals.lista_cantidades[i] %></option>
+    	        	    				<% } else { %>
+    	        	    					<option value=<%= locals.lista_cantidades[i] %>><%- locals.lista_cantidades[i] %></option>
+    	        	    				<% } %>
+    								<% } %>	
+    	        	        	</select>
+                	        </div>
+                	    </div>
+                		<div class="col-md-5">
+                		    <div class="form-group">
+                		    	<label for="pr_nombre_producto">Producto</label>
+                		    	<select id="pr_nombre_producto" name="pr_nombre_producto" class="form-control">
+    	        	        	    <% if (locals.valor_pr_producto.seleccionado == "0") { %>
+    	        	    				<option value="0" selected>Todos</option>
+    	        	    			<% } else { %>
+    	        	    				<option value="0">Todos</option>
+    	        	    			<% } %>
+    	        					<% for (var i in locals.lista_productos) { %>
+    	        						<% if (locals.valor_pr_producto.seleccionado == locals.lista_productos[i].id_producto) { %>
+    	        	    					<option value=<%= locals.lista_productos[i].id_producto %> selected><%- locals.lista_productos[i].nombre_producto %></option>
+    	        	    				<% } else { %>
+    	        	    					<option value=<%= locals.lista_productos[i].id_producto %>><%- locals.lista_productos[i].nombre_producto %></option>
+    	        	    				<% } %>
+    								<% } %>	
+    	        	        	</select>
+                		    </div>
+                		</div>
+                		<div class="col-md-3">
+                		    <div class="form-group">
+                		    	<label for="pr_estado">Estado prestamo</label>
+                		    	<select id="pr_estado" name="pr_estado" class="form-control">
+                                    <option value="0">Todos</option>
+                		    	    <option value="1">Activo</option>
+                		    	    <option value="2">Mora</option>
+                		    	    <option value="3">Finalizado</option>
+                		    	    <option value="4">Finalizado con mora</option>
+                		    	</select>
+                		    </div>
+                		</div>
+                	</div>
+                	<div class="row">
+                	    <div class="col-md-4">
+                	        <div class="form-group">
+                	        	<label for="pr_nombre_cliente">Nombre(s) cliente</label> 
+                	        	<input id="pr_nombre_cliente" name="pr_nombre_cliente" type="text" class="form-control">
+                	        </div>
+                	    </div>
+                	    <div class="col-md-4">
+                	        <div class="form-group">
+                	        	<label for="pr_apellid_clienteo">Apellido(s) cliente</label> 
+                	        	<input id="pr_apellido_cliente" name="pr_apellido_cliente" type="text" class="form-control">
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                	        <div class="form-group">
+                	        	<label for="pr_cedula_cliente">N° cedula cliente</label> 
+                	        	<input id="pr_cedula_cliente" name="pr_cedula_cliente" type="text" class="form-control">
+                	        </div>
+                	    </div>
+                	    <div class="col-md-2">
+                		    <div class="form-group">
+                		    	<label for="pr_grupo">Grupo</label>
+                		    	<select id="pr_grupo" name="pr_grupo" class="form-control">
+    	        	        	    <% if (locals.valor_pr_grupo.seleccionado == "0") { %>
+    	        	    				<option value="0" selected>Todos</option>
+    	        	    			<% } else { %>
+    	        	    				<option value="0">Todos</option>
+    	        	    			<% } %>
+    	        					<% for (var i in locals.lista_grupos) { %>
+    	        						<% if (locals.valor_pr_grupo.seleccionado == locals.lista_grupos[i].id_grupo) { %>
+    	        	    					<option value=<%= locals.lista_grupos[i].id_grupo %> selected><%- locals.lista_grupos[i].nombre_grupo %></option>
+    	        	    				<% } else { %>
+    	        	    					<option value=<%= locals.lista_grupos[i].id_grupo %>><%- locals.lista_grupos[i].nombre_grupo %></option>
+    	        	    				<% } %>
+    								<% } %>	
+    	        	        	</select>
+                		    </div>
+                		</div>
+                	</div>
+                	<div class="row">
+                	    <div class="col-md-12 text-right">
+                	        <div class="form-group">
+                	        	<button class="btn btn-primary">Buscar prestamos</button>
+                	        </div>
+                	    </div>
+                	</div>
+                	<hr>
+            	</form>
+            </div>    
+    	</div>
+    </form>
+   
+	<!-- Listado resultados -->
+   
+    <div class="row">
+       <div class="col-md-12">
+            <h2>Resultados busqueda</h2>
+       </div>
+	</div>
+   
+    <!-- Resultados busqueda clientes -->
+	
+	<table id="lista_prestamos" class="table table-condensed table-hover table-striped">
+    	<thead>
+    	    <tr>
+	        	<th data-column-id="pr_id" data-order="desc" data-visible="false" data-visible-in-selection="false" data-type="numeric" data-identifier="true">Id</th>
+	        	<th data-column-id="cl_nombre_completo">Cliente</th>
+	        	<th data-column-id="cl_grupo">Grupo</th>
+    	        <th data-column-id="pr_cantidad">Cantidad RD$</th>
+    	        <th data-column-id="pr_cuotas" data-type="date">Cuotas</th>
+    	        <th data-column-id="pr_fecha_creacion">Fecha creación</th>
+    	        <th data-column-id="pr_fecha_vencimiento">Fecha vencimiento</th>
+    	        <th data-column-id="pr_estado">Estado</th>
+    	        <th data-column-id="pr_comandos" data-sortable="false" data-align="center" data-header-align="center" data-formatter="cl_comandos">Comandos</th>
+    	    </tr>
+    	</thead>
+    	<tbody>
+    		<% for (q in locals.lista_prestamos) { %>
+    		<tr>
+        		<td><%= locals.lista_prestamos[q].pr_id %></td>
+        		<td><%= locals.lista_prestamos[q].cl_nombre_completo %></td>
+        		<td><%= locals.lista_prestamos[q].cl_grupo %></td>
+            	<td><%= locals.lista_prestamos[q].pr_cantidad %></td>
+            	<td><%= locals.lista_prestamos[q].pr_cuotas %></td>
+            	<td><%= locals.lista_prestamos[q].pr_fecha_creacion %></td>
+            	<td><%= locals.lista_prestamos[q].pr_fecha_vencimiento %></td>
+            	<td><%= locals.lista_prestamos[q].pr_estado %></td>
+			</tr>
+    		<% } %>
+		</tbody>
+	</table>
+
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include partials/footer.html %>

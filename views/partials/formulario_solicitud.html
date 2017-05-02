@@ -1,0 +1,148 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4><b>Cliente: </b><%= locals.valor_nombre_cliente %> - <a href="/visualizar_cliente/:<%= locals.valor_cl_id %>/:<%= locals.valor_cl_id_historial %>">Ver ficha</a> - <a href="/visualizar_solicitudes_cliente/:<%= locals.valor_cl_id %>">Ver solicitudes</a></h4>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h4><% if (locals.valor_sl_id != "") { %><b>Solicitud: </b><%= locals.valor_sl_id %><% } %></h4>
+		<br>
+	</div>
+</div>
+
+<form id="variables_creacion_visualizacion_prestamo" action="" method="get">
+	<input type="hidden" name="sl_id" value="<%= locals.valor_sl_id %>">
+	<input type="hidden" name="sl_producto" value="<%= locals.valor_sl_producto.seleccionado %>">
+	<input type="hidden" name="sl_cantidad_solicitada" value="<%= locals.valor_sl_cantidad_solicitada.seleccionado %>">
+	<input type="hidden" name="cl_id" value="<%= locals.valor_cl_id %>">
+    <input type="hidden" name="cl_id_historial" value="<%= locals.valor_cl_id_historial %>">
+</form>
+
+<form id="<%= locals.valor_id_formulario %>" <%= locals.valor_action_formulario %> <%= locals.valor_metodo_formulario %>>
+
+	<input type="hidden" name="sl_id" value="<%= locals.valor_sl_id %>">
+	<input type="hidden" name="cl_id" value="<%= locals.valor_cl_id %>">
+    <input type="hidden" name="cl_id_historial" value="<%= locals.valor_cl_id_historial %>">
+    <input type="hidden" name="sl_existencia_prestamo" value="<%= locals.valor_sl_existencia_prestamo %>">
+	
+	<div class="row">
+    	<div class="col-md-12">
+    		<h3>Datos solicitud</h3>
+    		<br>
+    	</div>
+    </div>
+	<div class="row">
+	    <div class="col-md-2">
+	        <div class="form-group">
+	        	<label for="sl_fecha_recepcion">Fecha recepcion</label>
+	        	<div class="input-group date" id="selector_sl_fecha_recepcion">
+	        	    <div class="input-group-addon add-on">
+                    	<span class="glyphicon glyphicon-calendar"></span>
+                    </div> 
+	        	    <input id="sl_fecha_recepcion" name="sl_fecha_recepcion" type="text" class="form-control" placeholder="dd/mm/aaaa" value="<%= locals.valor_sl_fecha_recepcion %>" <%= locals.estado_control_formulario %>>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="col-md-7">
+	        <div class="form-group">
+	        	<label for="sl_producto">Producto</label>
+	        	<select id="sl_producto" name="sl_producto" class="form-control" <%= locals.estado_control_formulario %>> <!-- Generado a partir de DB -->
+	        		<% if (locals.valor_sl_producto.seleccionado == "no_seleccionado") { %>
+            	    		<option value="no_seleccionado" selected>Selecciona</option>
+            	    	<% } else { %>
+            	    		<option value="no_seleccionado">Selecciona</option>
+            	    	<% } %>
+            		<% for (var i in locals.lista_productos) { %>
+            			<% if (locals.valor_sl_producto.seleccionado == locals.lista_productos[i].id_producto) { %>
+            	    		<option value=<%= locals.lista_productos[i].id_producto %> selected><%- locals.lista_productos[i].nombre_producto %></option>
+            	    	<% } else { %>
+            	    		<option value=<%= locals.lista_productos[i].id_producto %>><%- locals.lista_productos[i].nombre_producto %></option>
+            	    	<% } %>
+    				<% } %>		
+	        	</select>
+	        </div>
+	    </div>
+	    <div class="col-md-3">
+	        <div class="form-group">
+	        	<label for="sl_cantidad_solicitada">Cantidad RD$</label>
+	        	<select id="sl_cantidad_solicitada" name="sl_cantidad_solicitada" class="form-control" <%= locals.estado_control_formulario %>>
+	        		<!-- Ociones cargadas por AJAX desde DB en funcion del producto seleccionado -->
+	        	</select>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+	        <div class="form-group">
+	        	<label for="sl_numero_cuenta_transferencia">N° de cuenta para la transferencia (IBAN)</label> 
+	        	<input id="sl_numero_cuenta_transferencia" name="sl_numero_cuenta_transferencia" type="text" class="form-control" value="<%= locals.valor_sl_numero_cuenta_transferencia %>" <%= estado_control_formulario %>>
+	        </div>
+	    </div>
+	    <div class="col-md-6">
+	        <div class="form-group">
+	        	<label for="sl_nombre_banco_transferencia">Nombre del banco</label> 
+	        	<input id="sl_nombre_banco_transferencia" name="sl_nombre_banco_transferencia" type="text" class="form-control" value="<%= locals.valor_sl_nombre_banco_transferencia %>" <%= estado_control_formulario %>>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+    	<div class="col-md-12">
+    		<div class="form-group">
+    			<label for="sl_comentarios">Comentarios</label> 
+    			<textarea id="sl_comentarios" name="sl_comentarios" class="form-control" rows="5" <%= locals.estado_control_formulario %>><%= locals.valor_sl_comentarios %></textarea>
+    		</div>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5><b>Estado solicitud</b></h5>
+		</div>
+	</div>
+	<div class="radio">
+	    <label for="radio1">
+        	<% if (locals.valor_sl_estado.seleccionado == "1") { %>
+	        	<input type="radio" name="sl_estado" id="radio1" value="1" checked <%= locals.estado_control_formulario %>> Pendiente
+	        <% } else { %>
+	        	<input type="radio" name="sl_estado" id="radio1" value="1" <%= locals.estado_control_formulario %>> Pendiente
+	        <% } %>
+	    </label>
+	</div>
+	<div class="radio">
+	    <label for="radio3">
+        	<% if (locals.valor_sl_estado.seleccionado == "2") { %>
+	        	<input type="radio" name="sl_estado" id="radio3" value="2" checked <%= locals.estado_control_formulario %>> Aceptada
+	        <% } else { %>
+	        	<input type="radio" name="sl_estado" id="radio3" value="2" <%= locals.estado_control_formulario %>> Aceptada
+	        <% } %>
+	    </label>
+	</div>
+	<div class="radio">
+	    <label for="radio2">
+        	<% if (locals.valor_sl_estado.seleccionado == "3") { %>
+	        	<input type="radio" name="sl_estado" id="radio2" value="3" checked <%= locals.estado_control_formulario %>> Rechazada
+	        <% } else { %>
+	        	<input type="radio" name="sl_estado" id="radio2" value="3" <%= locals.estado_control_formulario %>> Rechazada
+	        <% } %>
+	    </label>
+	</div>
+
+<!-- AÑADIR PLUGIN UPLOAD ARCHIVOS -->
+	
+	<div class="row">
+		<div class="col-md-12">
+			<hr>
+		</div>
+	</div>
+		
+	<!-- Botones -->
+		
+	<div class="row <%= locals.visibilidad %>">
+	    <div class="col-md-12 text-right">
+	        <div class="form-group">
+	        	<a href="#ventana1" class="btn btn-default" data-toggle="modal">Cancelar</a>
+            	<button class="btn btn-primary" type="submit" id="valida_formulario">Guardar</button>
+	        </div>
+	    </div>
+	</div>
+	<hr class="<%= locals.visibilidad %>">
+</form>
