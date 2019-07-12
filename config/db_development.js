@@ -6,7 +6,7 @@ var db = mysql.createConnection({
 	host: '127.0.0.1',
 	user: 'dev',
 	password: 'dev',
-	database: 'pluto',
+	database: 'loany',
 	dateStrings: 'date', // Fuerza MySQL a devolver las fecha de tipo TIMESTAMP, DATETIME, DATE en formato string.
 	timezone: "local"
 });

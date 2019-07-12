@@ -1,2 +1,3 @@
-# Pluto
-Software gestión prestamos
+# Loany
+Software platform for loan management
+
