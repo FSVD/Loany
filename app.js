@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuracion del motor de templating.
-app.set('views', path.join(__dirname, 'src/_commons/views'));
+app.set('views', path.join(__dirname + 'src/_commons/views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
