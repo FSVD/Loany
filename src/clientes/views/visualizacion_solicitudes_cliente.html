@@ -1,0 +1,66 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-6">
+    		<h1 id="titulo"><%= locals.nombre_pagina %></h1>
+    	</div>
+    	<div class="col-md-6 text-right">
+    		<br>
+    		<% if (locals.valor_cl_existencia_prestamo_activo == 0) { %>
+    			<button class="btn btn-success" type="submit" form="variables_creacion_visualizacion_solicitudes">Crear solicitud</button>
+    		<% } %>
+    	</div>
+    </div>
+    <hr>
+    
+    <div class="row">
+		<div class="col-md-12">
+			<h4><b>Cliente: </b><%= locals.valor_nombre_cliente %> - <a href="/visualizar_cliente/:<%= locals.valor_cl_id %>/:<%= locals.valor_cl_id_historial %>">Ver ficha</a></h4>
+		</div>
+	</div>
+	<br>
+	
+    <form id="variables_creacion_visualizacion_solicitudes" action="/crear_solicitud" method="get">
+		<input type="hidden" name="cl_id" value="<%= locals.valor_cl_id %>">
+	    <input type="hidden" name="cl_id_historial" value="<%= locals.valor_cl_id_historial %>">
+	</form>
+   
+    <!-- Solicitudes cliente -->
+	
+	<table id="lista_solicitudes_cliente" class="table table-condensed table-hover table-striped">
+    	<thead>
+    	    <tr>
+	        	<th data-column-id="sl_id" data-order="desc" data-visible="false" data-visible-in-selection="false" data-type="numeric" data-identifier="true">Id</th>
+	        	<th data-column-id="clientes_cl_id" data-visible="false" data-visible-in-selection="false" data-type="numeric">Id</th>
+	        	<th data-column-id="clientes_historial_cl_id_historial" data-visible="false" data-visible-in-selection="false" data-type="numeric">Id</th>
+    	        <th data-column-id="sl_fecha_recepcion" data-type="date">Fecha recepcion</th>
+    	        <th data-column-id="sl_fecha_creacion" data-order="desc" data-type="date">Fecha creacion</th>
+    	        <th data-column-id="sl_cantidad_solicitada">Cantidad solicitada</th>
+    	        <th data-column-id="sl_estado">Estado</th>
+    	        <th data-column-id="sl_prestamo_finalizado">Estado prestamo</th>
+    	        <th data-column-id="sl_comandos" data-sortable="false" data-align="center" data-header-align="center" data-formatter="sl_comandos">Comandos</th>
+    	    </tr>
+    	</thead>
+    	<tbody>
+    		<% for (q in locals.lista_solicitudes_cliente) { %>
+    		<tr>
+        		<td><%= locals.lista_solicitudes_cliente[q].sl_id %></td>
+        		<td><%= locals.lista_solicitudes_cliente[q].clientes_cl_id %></td>
+        		<td><%= locals.lista_solicitudes_cliente[q].clientes_historial_cl_id_historial %></td>
+            	<td><%= locals.lista_solicitudes_cliente[q].sl_fecha_recepcion %></td>
+            	<td><%= locals.lista_solicitudes_cliente[q].sl_fecha_creacion %></td>
+            	<td><%= locals.lista_solicitudes_cliente[q].sl_cantidad_solicitada %></td>
+            	<td><%= locals.lista_solicitudes_cliente[q].sl_estado %></td>
+            	<td><%= locals.lista_solicitudes_cliente[q].sl_prestamo_finalizado %></td>
+			</tr>
+    		<% } %>
+		</tbody>
+	</table>
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>

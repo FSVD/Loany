@@ -1,0 +1,18 @@
+<% include head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+		<div class="col-md-12">
+			<h1><%= locals.titulo %> <%= locals.error.status %>: <%= locals.message %></h1>
+			<h2><%= locals.subtitulo %></h2>
+			<br>
+			<pre><%= locals.error.stack %></pre>
+		</div>
+	</div>
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include footer.html %>

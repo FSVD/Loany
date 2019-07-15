@@ -1,0 +1,47 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/cargar_buscador_clientes" class="btn btn-success">Buscar clientes</a>
+            <a href="/crear_cliente" class="btn btn-success">Crear cliente</a>
+            <a href="/crear_grupo" class="btn btn-success">Crear grupo</a>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab">Proximas cuotas a caducar</a></li>
+                    <li role="presentation"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab">Solicitudes pendientes</a></li>
+                    <li role="presentation"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab">Prestamos a ingresar</a></li>
+                    <li role="presentation"><a href="#seccion4" aria-controls="seccion4" data-toggle="tab">Comisiones diarias debidas</a></li
+                </ul>
+            </div>
+            
+            <div class="tab-content">
+                <div class="tab-pane active" role="tabpanel" id="seccion1">
+                    <% include ../../_commons/views/_dummy_proximas_cueotas_a_caducar.html %>
+                </div>
+                
+                <div class="tab-pane" role="tabpanel" id="seccion2">
+                    <% include ../../_commons/views/_dummy_solicitudes_pendientes.html %>
+                </div>
+                
+                <div class="tab-pane" role="tabpanel" id="seccion3">
+                    <% include ../../_commons/views/_dummy_prestamos_a_ingresar.html %>
+                </div>
+                
+                <div class="tab-pane" role="tabpanel" id="seccion4">
+                    <% include ../../_commons/views/_dummy_comisiones_diarias_debidas.html %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>

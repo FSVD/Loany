@@ -1,0 +1,186 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+   
+	<!-- buscador -->
+	
+	<form id="formulario_busqueda_clientes" action="/buscar_clientes" method="get">   
+    	<div class="row">
+    	    <div class="col-md-12">
+    	        <h1><%= locals.nombre_pagina %></h1>
+    	        <hr>
+    	    </div>
+		</div>
+		<div class="row">
+    	    <div class="col-md-12">
+    	        <form action="">
+    	        	<div class="row">
+    	        	    <div class="col-md-4">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_nombre">Nombre(s)</label> 
+    	        	        	<input id="cl_nombre" name="cl_nombre" type="text" class="form-control">
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-4">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_apellido">Apellido(s)</label> 
+    	        	        	<input id="cl_apellido" name="cl_apellido" type="text" class="form-control">
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-2">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_fecha_nacimiento">Fecha de nacimiento</label>
+    	        	        	<div class="input-group date" id="selector_cl_fecha_nacimiento">
+    	        	        		<div class="input-group-addon add-on">
+                    					<span class="glyphicon glyphicon-calendar"></span>
+                    				</div> 
+    	        	        		<input id="cl_fecha_nacimiento" name="cl_fecha_nacimiento" type="text" class="form-control" placeholder="dd/mm/aaaa">
+    	        	        	</div>
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-2">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_cedula">N° cedula</label> 
+    	        	        	<input id="cl_cedula" name="cl_cedula" type="text" class="form-control">
+    	        	        </div>
+    	        	    </div>
+    	        	</div>
+    	        	<div class="row">
+    	        	    <div class="col-md-3">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_celular">Telefono celular</label> 
+    	        	        	<input id="cl_celular" name="cl_celular" type="text" class="form-control">
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-6">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_correo_electronico">Correo electronico</label>
+    	        	        	<input id="cl_correo_electronico" name="cl_correo_electronico" type="email" class="form-control">
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-3">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_grupo">Grupo</label>
+    	        	        	<select id="cl_grupo" name="cl_grupo" class="form-control">
+    	        	        	    <% if (locals.valor_cl_grupo.seleccionado == "0") { %>
+    	        	    				<option value="0" selected>Todos</option>
+    	        	    			<% } else { %>
+    	        	    				<option value="0">Todos</option>
+    	        	    			<% } %>
+    	        					<% for (var i in locals.lista_grupos) { %>
+    	        						<% if (locals.valor_cl_grupo.seleccionado == locals.lista_grupos[i].id_grupo) { %>
+    	        	    					<option value=<%= locals.lista_grupos[i].id_grupo %> selected><%- locals.lista_grupos[i].nombre_grupo %></option>
+    	        	    				<% } else { %>
+    	        	    					<option value=<%= locals.lista_grupos[i].id_grupo %>><%- locals.lista_grupos[i].nombre_grupo %></option>
+    	        	    				<% } %>
+    								<% } %>	
+    	        	        	</select>
+    	        	        </div>
+    	        	    </div>
+    	        	</div>
+    	        	<div class="row">
+    	        		<div class="col-md-2">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_fecha_creacion_desde">Creado (desde)</label>
+    	        	        	<div class="input-group date" id="selector_cl_fecha_creacion_desde">
+    	        	        		<div class="input-group-addon add-on">
+                    					<span class="glyphicon glyphicon-calendar"></span>
+                    				</div> 
+    	        	        		<input id="cl_fecha_creacion_desde" name="cl_fecha_creacion_desde" type="text" class="form-control" placeholder="dd/mm/aaaa">
+    	        	        	</div>
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-2">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_fecha_creacion_hasta">Creado (hasta)</label>
+    	        	        	<div class="input-group date" id="selector_cl_fecha_creacion_hasta">
+    	        	        		<div class="input-group-addon add-on">
+                    					<span class="glyphicon glyphicon-calendar"></span>
+                    				</div> 
+    	        	        		<input id="cl_fecha_creacion_hasta" name="cl_fecha_creacion_hasta" type="text" class="form-control" placeholder="dd/mm/aaaa">
+    	        	        	</div>
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-3">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_solvencia">Solvencia</label>
+    	        	        	<select id="cl_solvencia" name="cl_solvencia" class="form-control">
+    	        	        	    <option value="0">Todos</option>
+    	        	        	    <option value="1">Solvente</option>
+    	        	        	    <option value="2">Moroso</option>
+    	        	        	    <option value="3">Indefinida (nuevos clientes)</option>
+    	        	        	</select>
+    	        	        </div>
+    	        	    </div>
+    	        	    <div class="col-md-3">
+    	        	        <div class="form-group">
+    	        	        	<label for="cl_estado_solicitud">Estado solicitud</label>
+    	        	        	<select id="cl_estado_solicitud" name="cl_estado_solicitud" class="form-control">
+    	        	        	    <option value="0">Todos</option>
+    	        	        	    <option value="1">Pendiente</option>
+    	        	        	    <option value="2">Aceptada</option>
+    	        	        	    <option value="3">Rechazada</option>
+    	        	        	</select>
+    	        	        </div>
+    	        	    </div>
+    	        	</div>
+    	        	<div class="row">
+    	        	    <div class="col-md-12 text-right">
+    	        	        <div class="form-group">
+    	        	        	<button class="btn btn-primary" type="submit" form="formulario_busqueda_clientes">Buscar clientes</button>
+    	        	        </div>
+    	        	    </div>
+    	        	</div>
+    	        	<hr>
+    	    	</form>
+    	    </div>    
+		</div>
+	</form>
+	
+	<!-- Listado resultados -->
+   
+    <div class="row">
+       <div class="col-md-12">
+            <h2>Resultados busqueda</h2>
+       </div>
+	</div>
+	
+	<!-- Resultados busqueda clientes -->
+	
+	<table id="lista_clientes" class="table table-condensed table-hover table-striped">
+    	<thead>
+    	    <tr>
+	        	<th data-column-id="cl_id" data-order="desc" data-visible="false" data-visible-in-selection="false" data-type="numeric" data-identifier="true">Id</th>
+	        	<th data-column-id="cl_nombre_completo">Cliente</th>
+	        	<th data-column-id="cl_grupo">Grupo</th>
+    	        <th data-column-id="cl_tipo_documento">Documento</th>
+    	        <th data-column-id="cl_numero_documento">Numero</th>
+    	        <th data-column-id="cl_fecha_nacimiento" data-type="date">Fecha de nacimiento</th>
+    	        <th data-column-id="cl_celular">Telefono celular</th>
+    	        <th data-column-id="cl_correo_electronico">Correo electronico</th>
+    	        <th data-column-id="cl_comandos" data-sortable="false" data-align="center" data-header-align="center" data-formatter="cl_comandos">Comandos</th>
+    	    </tr>
+    	</thead>
+    	<tbody>
+    		<% for (q in locals.lista_clientes) { %>
+    		<tr>
+        		<td><%= locals.lista_clientes[q].cl_id %></td>
+        		<td><%= locals.lista_clientes[q].cl_nombre_completo %></td>
+        		<td><%= locals.lista_clientes[q].cl_grupo %></td>
+            	<td><%= locals.lista_clientes[q].cl_tipo_documento %></td>
+            	<td><%= locals.lista_clientes[q].cl_numero_documento %></td>
+            	<td><%= locals.lista_clientes[q].cl_fecha_nacimiento %></td>
+            	<td><%= locals.lista_clientes[q].cl_celular %></td>
+            	<td><%= locals.lista_clientes[q].cl_correo_electronico %></td>
+			</tr>
+    		<% } %>
+		</tbody>
+	</table>
+   
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>

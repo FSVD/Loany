@@ -1,0 +1,52 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-6">
+    		<h1><%= locals.nombre_pagina %></h1>
+    	</div>
+    	<div class="col-md-6 text-right">
+    		<br>
+    		<a href="/crear_producto" class="btn btn-success">Crear producto</a>
+    	</div>
+    </div>
+    <hr>
+    
+    <!-- Productos -->
+	
+	<table id="lista_productos" class="table table-condensed table-hover table-striped">
+    	<thead>
+    	    <tr>
+	        	<th data-column-id="pd_id" data-visible="false" data-visible-in-selection="false" data-type="numeric" data-identifier="true">Id</th>
+    	        <th data-column-id="pd_nombre" data-width="250">Nombre producto</th>
+    	        <th data-column-id="pd_importe_minimo">Imp. minimo</th>
+    	        <th data-column-id="pd_importe_maximo">Imp. maximo</th>
+    	        <th data-column-id="pd_interes_mensual">Intereses mensual</th>
+    	        <th data-column-id="pd_max_cuotas" data-type="numeric">Max cuotas</th>
+    	        <th data-column-id="pd_gastos_activacion">Gastos activacion</th>
+    	        <th data-column-id="pd_estado">Estado</th>
+    	        <th data-column-id="pd_comandos" data-sortable="false" data-align="center" data-header-align="center" data-formatter="pd_comandos">Comandos</th>
+    	    </tr>
+    	</thead>
+    	<tbody>
+    		<% for (q in locals.lista_productos) { %>
+    		<tr>
+        		<td><%= locals.lista_productos[q].pd_id %></td>
+            	<td><%= locals.lista_productos[q].pd_nombre %></td>
+            	<td><%= locals.lista_productos[q].pd_importe_minimo %></td>
+            	<td><%= locals.lista_productos[q].pd_importe_maximo %></td>
+            	<td><%= locals.lista_productos[q].pd_interes_mensual %></td>
+            	<td><%= locals.lista_productos[q].pd_max_cuotas %></td>
+            	<td><%= locals.lista_productos[q].pd_gastos_activacion %></td>
+            	<td><%= locals.lista_productos[q].pd_estado %></td>
+			</tr>
+    		<% } %>
+		</tbody>
+	</table>
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>

@@ -1,0 +1,84 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-6">
+    		<h1 id="titulo"><%= locals.nombre_pagina %></h1>
+    	</div>
+    	<div class="col-md-6 text-right">
+    	<br>
+    		<% if (locals.valor_pr_fecha_finalizacion == null) { %>
+    			<button class="btn btn-success" type="submit" form="formulario_prestamo" id="btn_modifica">Renegociar</button>
+    			<a href="#ventana1" class="btn btn-danger" data-toggle="modal">Eliminar</a>
+    		<% } %>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<%- locals.valor_info_prestamo %>
+    	</div>
+    </div>
+    <hr>
+    
+    <!-- Formulario prestamo -->
+
+    <% include formulario_prestamo.html %>
+    
+    <!-- Penalización por incumplimineto de pago -->
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<%- locals.valor_info_penalizacion_incumplimiento_pago %>
+    	</div>
+    </div>
+    
+    <!-- Cuotas prestamo -->
+    
+    <table id="lista_cuotas_prestamo" class="table table-condensed table-hover table-striped">
+    	<thead>
+    	    <tr>
+    	    	<th data-column-id="status" data-type="numeric" data-visible="false" data-visible-in-selection="false">Color estado</th>
+	        	<th data-column-id="ct_id" data-visible="false" data-visible-in-selection="false" data-type="numeric" data-identifier="true">Id</th>
+    	        <th data-column-id="ct_numero" data-order="asc" data-type="numeric">Cuota Nº</th>
+    	        <th data-column-id="ct_cantidad">Cantidad</th>
+    	        <th data-column-id="ct_amortizado">Capital</th>
+    	        <th data-column-id="ct_intereses">Intereses</th>
+    	        <th data-column-id="ct_saldo_prestamo">Saldo</th>
+    	        <th data-column-id="ct_fecha_pago" data-type="date">Fecha pago</th>
+    	        <th data-column-id="ct_estado"  data-width="160">Estado</th>
+    	        <th data-column-id="ct_cantidad_mora">Mora</th>
+    	        <th data-column-id="ct_total_pago">Total</th>
+    	        <th data-column-id="ct_finalizacion" data-sortable="false" data-align="center" data-header-align="center" data-formatter="ct_finalizacion">Finalizada</th>
+    	    </tr>
+    	</thead>
+    	<tbody>
+    		<% for (q in locals.lista_cuotas) { %>
+    		<tr>
+    			<td><%= locals.lista_cuotas[q].ct_color_estado %></td>
+        		<td><%= locals.lista_cuotas[q].ct_id %></td>
+            	<td><%= locals.lista_cuotas[q].ct_numero %></td>
+            	<td><%= locals.lista_cuotas[q].ct_cantidad %></td>
+            	<td><%= locals.lista_cuotas[q].ct_amortizado %></td>
+            	<td><%= locals.lista_cuotas[q].ct_intereses %></td>
+            	<td><%= locals.lista_cuotas[q].ct_saldo_prestamo %></td>
+            	<td><%= locals.lista_cuotas[q].ct_fecha_pago %></td>
+            	<td><%= locals.lista_cuotas[q].ct_estado %></td>
+            	<td><%= locals.lista_cuotas[q].ct_cantidad_mora %></td>
+            	<td><%= locals.lista_cuotas[q].ct_total_pago %></td>
+			</tr>
+    		<% } %>
+		</tbody>
+	</table>
+
+    <!-- Codigo ventanas modales -->
+    
+    <% include ../../_commons/views/modal_1.html %>
+    <% include ../../_commons/views/modal_3.html %>
+    <% include ../../_commons/views/modal_4.html %>
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>

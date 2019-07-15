@@ -4,26 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var accessPoints = require('./routes/access_points');
 
 var app = express();
 
-// Configuracion del motor de templating.
-
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// LLama el archivo que gestiona los puntos de acceso de la api.
+// Configuracion del motor de templating.
+app.set('views', path.join(__dirname, 'src/_commons/views'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
-app.use(accessPoints);
+// Importa los modulos de la aplicación
+var appModules = require('./app.modules');
+app.use(appModules);
 
 // Captura el codigo de estado 404 y redirige al gestor de errores.
 

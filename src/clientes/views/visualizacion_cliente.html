@@ -1,0 +1,43 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-6">
+    		<h1 id="titulo"><%= locals.nombre_pagina %></h1>
+    	</div>
+    	<div class="col-md-6 text-right">
+    		<br>
+    		<% if (locals.valor_cl_existencia_solicitudes != 0) { %>
+    			<a href="/visualizar_solicitudes_cliente/:<%= locals.valor_cl_id %>" class="btn btn-success">Ver solicitudes &nbsp;<span class="badge"><%= locals.valor_total_solicitudes%></span></a>
+    		<% } %>
+    		<% if (locals.valor_cl_existencia_prestamo_activo == 0 && locals.valor_cl_existencia_historial_actualizado == 0) { %>
+    			<button class="btn btn-success" type="submit" form="variables_creacion_visualizacion_solicitudes">Crear solicitud</button>
+    		<% } %>
+    		<% if (locals.valor_cl_existencia_historial_actualizado == 0) { %>
+    			<button class="btn btn-success" type="submit" form="formulario_cliente" id="btn_modifica">Modificar</button>
+    			<a href="#ventana1" class="btn btn-danger" data-toggle="modal">Eliminar</a>
+    		<% } %>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<%- locals.valor_info_historial %>
+    	</div>
+    </div>
+    <hr>
+    
+    <!-- Formulario cliente -->
+
+    <% include formulario_cliente.html %>
+
+    <!-- Codigo ventanas modales -->
+    
+    <% include ../../_commons/views/modal_1.html %>
+    
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>

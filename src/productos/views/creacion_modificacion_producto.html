@@ -1,0 +1,26 @@
+<% include ../../_commons/views/head.html %>
+    
+<!-- Inicio contenido pagina -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-12">
+    		<h1><%= locals.nombre_pagina %></h1>
+    		<hr>
+    	</div>
+    </div>
+    
+    <!-- Formulario producto -->
+
+    <% include formulario_producto.html %>
+
+    <!-- Codigo ventanas modales -->
+    
+    <% include ../../_commons/views/modal_1.html %>
+    <% include ../../_commons/views/modal_2.html %>
+    
+</div>
+
+<!-- Fin contenido pagina -->
+    
+<% include ../../_commons/views/footer.html %>
