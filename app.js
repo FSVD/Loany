@@ -31,8 +31,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// Gestor de errores
-
 // Gestor de errores de desarrollo. (Reporta la traza de error generado)
 
 if (app.get('env') === 'development') {
