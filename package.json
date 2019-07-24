@@ -1,28 +1,29 @@
 {
-	"name": "loany",
-	"version": "1.0.0",
-	"description": "Multiprocess RESTful system for loan management",
-	"main": "cluster.js",
-	"private": true,
-	"scripts": {
-		"start": "nodemon ./cluster.js"
-	},
-	"author": "Fabio Schettino",
-	"license": "ISC",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/FSVD/Loany.git"
-	},
-	"dependencies": {
-		"body-parser": "1.19.0",
-		"cookie-parser": "1.3.5",
-		"debug": "2.2.0",
-		"dotenv": "4.0.0",
-		"ejs": "2.3.4",
-		"express": "4.17.1",
-		"morgan": "1.9.1",
-		"multi-views": "0.1.1",
-		"mysql": "2.17.1",
-		"serve-favicon": "2.5.0"
-	}
+  "name": "loany",
+  "version": "1.0.0",
+  "description": "Multiprocess RESTful system for loan management",
+  "main": "cluster.js",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./cluster.js",
+    "start": "node ./cluster.js"
+  },
+  "author": "Fabio Schettino",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FSVD/Loany.git"
+  },
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "cookie-parser": "1.3.5",
+    "debug": "2.2.0",
+    "dotenv": "4.0.0",
+    "ejs": "2.3.4",
+    "express": "4.17.1",
+    "morgan": "1.9.1",
+    "multi-views": "0.1.1",
+    "mysql": "2.17.1",
+    "serve-favicon": "2.5.0"
+  }
 }

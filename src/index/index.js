@@ -12,7 +12,7 @@ var viewDirs = app.get('views');
 viewDirs.push(path.resolve(__dirname + '../_commons/views'));
 
 // router setup
-var genre = require('./index.router');
-genre.configure(app);
+var routerIndex = require('./index.router');
+routerIndex.configure(app);
 
 module.exports = app;

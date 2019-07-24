@@ -15,7 +15,7 @@ function http() {
         /* Llama la funcion que carga el formulario para la creacion de un nuevo grupo. */
         app.get('/crear_grupo', ctrlGrupos.crearGrupo);
 
-        /* Llama la funcion que guarda un nuevo ggruporupo en la base de datos. */
+        /* Llama la funcion que guarda un nuevo grupo en la base de datos. */
         app.post('/guardar_grupo', ctrlGrupos.guardarGrupo);
 
         /* Llama la funcion que visualiza la ficha del grupo. */

@@ -12,7 +12,7 @@ var viewDirs = app.get('views');
 viewDirs.push(path.resolve(__dirname + '../_commons/views'));
 
 // router setup
-var genre = require('./prestamos.router');
-genre.configure(app);
+var routerPrestamos = require('./prestamos.router');
+routerPrestamos.configure(app);
 
 module.exports = app;
