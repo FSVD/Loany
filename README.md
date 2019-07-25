@@ -25,18 +25,23 @@ JQuery<br>
 
 ## Environment variables
 
-NODE_ENV=development<br>
+```
+# Options: development | staging | production
+NODE_ENV = development
 
-PORT=3000<br>
+# API port
+PORT = 3000
 
-DEVELOPMENT_DB_NAME=loany<br>
-DEVELOPMENT_DB_USER={ your database user }<br>
-DEVELOPMENT_DB_PASSWORD={ your database password }<br>
+# Database credentials
+DEVELOPMENT_DB_NAME = loany
+DEVELOPMENT_DB_USER = { your database user }
+DEVELOPMENT_DB_PASSWORD = { your database password }
 
-STAGING_DB_NAME=loany<br>
-STAGING_DB_USER={ your database user }<br>
-STAGING_DB_PASSWORD={ your database password }<br>
+STAGING_DB_NAME = loany
+STAGING_DB_USER = { your database user }
+STAGING_DB_PASSWORD = { your database password }
 
-PRODUCTION_DB_NAME=loany<br>
-PRODUCTION_DB_USER={ your database user }<br>
-PRODUCTION_DB_PASSWORD={ your database password }<br>
+PRODUCTION_DB_NAME = loany<br>
+PRODUCTION_DB_USER = { your database user }
+PRODUCTION_DB_PASSWORD = { your database password }
+```
